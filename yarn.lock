@@ -1891,7 +1891,7 @@ debug@^3.1.0, debug@^3.2.5:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.0.1:
+debug@^4.0.1, debug@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npmjs.org/debug/-/debug-4.1.0.tgz#373687bffa678b38b1cd91f861b63850035ddc87"
   dependencies:
@@ -2231,6 +2231,12 @@ escodegen@^1.8.1:
   optionalDependencies:
     source-map "~0.6.1"
 
+eslint-config-prettier@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-3.3.0.tgz#41afc8d3b852e757f06274ed6c44ca16f939a57d"
+  dependencies:
+    get-stdin "^6.0.0"
+
 eslint-config-standard@^12.0.0-alpha.0:
   version "12.0.0"
   resolved "https://registry.npmjs.org/eslint-config-standard/-/eslint-config-standard-12.0.0.tgz#638b4c65db0bd5a41319f96bba1f15ddad2107d9"
@@ -2242,9 +2248,9 @@ eslint-import-resolver-node@^0.3.1:
     debug "^2.6.9"
     resolve "^1.5.0"
 
-eslint-loader@^2.1.0:
-  version "2.1.1"
-  resolved "https://registry.npmjs.org/eslint-loader/-/eslint-loader-2.1.1.tgz#2a9251523652430bfdd643efdb0afc1a2a89546a"
+eslint-loader@2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/eslint-loader/-/eslint-loader-2.1.0.tgz#61334c548aeb0b8e20ec3a552fb7a88c47261c6a"
   dependencies:
     loader-fs-cache "^1.0.0"
     loader-utils "^1.0.2"
@@ -2298,6 +2304,12 @@ eslint-plugin-node@^7.0.1:
     resolve "^1.8.1"
     semver "^5.5.0"
 
+eslint-plugin-prettier@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/eslint-plugin-prettier/-/eslint-plugin-prettier-3.0.0.tgz#f6b823e065f8c36529918cdb766d7a0e975ec30c"
+  dependencies:
+    prettier-linter-helpers "^1.0.0"
+
 eslint-plugin-promise@^3.8.0:
   version "3.8.0"
   resolved "https://registry.npmjs.org/eslint-plugin-promise/-/eslint-plugin-promise-3.8.0.tgz#65ebf27a845e3c1e9d6f6a5622ddd3801694b621"
@@ -2305,6 +2317,12 @@ eslint-plugin-promise@^3.8.0:
 eslint-plugin-standard@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/eslint-plugin-standard/-/eslint-plugin-standard-3.1.0.tgz#2a9e21259ba4c47c02d53b2d0c9135d4b1022d47"
+
+eslint-plugin-vue@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.npmjs.org/eslint-plugin-vue/-/eslint-plugin-vue-5.0.0.tgz#4a2cc1c0e71ea45e1bd9c1a60f925bfe68bb5710"
+  dependencies:
+    vue-eslint-parser "^4.0.2"
 
 eslint-scope@3.7.1:
   version "3.7.1"
@@ -2369,6 +2387,14 @@ eslint@^5.3.0:
     strip-json-comments "^2.0.1"
     table "^5.0.2"
     text-table "^0.2.0"
+
+espree@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.npmjs.org/espree/-/espree-4.1.0.tgz#728d5451e0fd156c04384a7ad89ed51ff54eb25f"
+  dependencies:
+    acorn "^6.0.2"
+    acorn-jsx "^5.0.0"
+    eslint-visitor-keys "^1.0.0"
 
 espree@^5.0.0:
   version "5.0.0"
@@ -2563,6 +2589,10 @@ extsprintf@^1.2.0:
 fast-deep-equal@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
+
+fast-diff@^1.1.2:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/fast-diff/-/fast-diff-1.2.0.tgz#73ee11982d86caaf7959828d519cfe927fac5f03"
 
 fast-json-stable-stringify@^2.0.0:
   version "2.0.0"
@@ -2800,6 +2830,10 @@ get-caller-file@^1.0.1:
 get-own-enumerable-property-symbols@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npmjs.org/get-own-enumerable-property-symbols/-/get-own-enumerable-property-symbols-3.0.0.tgz#b877b49a5c16aefac3655f2ed2ea5b684df8d203"
+
+get-stdin@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npmjs.org/get-stdin/-/get-stdin-6.0.0.tgz#9e09bf712b360ab9225e812048f71fde9c89657b"
 
 get-stream@^3.0.0:
   version "3.0.0"
@@ -4850,6 +4884,12 @@ prepend-http@^1.0.1:
   version "1.0.4"
   resolved "https://registry.npmjs.org/prepend-http/-/prepend-http-1.0.4.tgz#d4f4562b0ce3696e41ac52d0e002e57a635dc6dc"
 
+prettier-linter-helpers@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/prettier-linter-helpers/-/prettier-linter-helpers-1.0.0.tgz#d23d41fe1375646de2d0104d3454a3008802cf7b"
+  dependencies:
+    fast-diff "^1.1.2"
+
 prettier@1.13.7:
   version "1.13.7"
   resolved "https://registry.npmjs.org/prettier/-/prettier-1.13.7.tgz#850f3b8af784a49a6ea2d2eaa7ed1428a34b7281"
@@ -6170,6 +6210,17 @@ vm-browserify@0.0.4:
   resolved "http://registry.npmjs.org/vm-browserify/-/vm-browserify-0.0.4.tgz#5d7ea45bbef9e4a6ff65f95438e0a87c357d5a73"
   dependencies:
     indexof "0.0.1"
+
+vue-eslint-parser@^4.0.2:
+  version "4.0.3"
+  resolved "https://registry.npmjs.org/vue-eslint-parser/-/vue-eslint-parser-4.0.3.tgz#80cf162e484387b2640371ad21ba1f86e0c10a61"
+  dependencies:
+    debug "^4.1.0"
+    eslint-scope "^4.0.0"
+    eslint-visitor-keys "^1.0.0"
+    espree "^4.1.0"
+    esquery "^1.0.1"
+    lodash "^4.17.11"
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.1"

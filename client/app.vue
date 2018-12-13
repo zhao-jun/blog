@@ -6,27 +6,26 @@
 </template>
 
 <script>
-import Header from './layout/header.vue'
+import Header from './layout/header.vue';
 
 export default {
   components: {
     Header
   },
-  data () {
+  data() {
     return {
       header: 'ssr header'
-    }
+    };
   },
-  mounted () {
-  }
-}
+  mounted() {}
+};
 </script>
 
 <style lang="less" scoped module>
 body {
   color: blue;
   .text-a {
-    transform:translateX(50px);
+    transform: translateX(50px);
   }
 }
 </style>

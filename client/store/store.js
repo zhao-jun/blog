@@ -1,10 +1,10 @@
-import Vuex from 'vuex'
-import getters from './getters'
-import mutations from './mutations'
-import actions from './actions'
-import modules from './modules'
+import Vuex from 'vuex';
+import getters from './getters';
+import mutations from './mutations';
+import actions from './actions';
+import modules from './modules';
 
-const isDev = process.env.NODE_ENV === 'development'
+const isDev = process.env.NODE_ENV === 'development';
 
 export default () => {
   const store = new Vuex.Store({
@@ -13,7 +13,7 @@ export default () => {
     mutations,
     actions,
     modules
-  })
+  });
 
   if (module.hot) {
     module.hot.accept(
@@ -27,7 +27,7 @@ export default () => {
         // const newMutations = require('./mutations').default
         // const newActions = require('./actions').default
         // const newGetters = require('./getters').default
-        const newModulesHome = require('./modules/home').default
+        const newModulesHome = require('./modules/home').default;
 
         store.hotUpdate({
           // mutations: newMutations,
@@ -37,9 +37,9 @@ export default () => {
             // 模块实现热重载必须单个写
             newModulesHome
           }
-        })
+        });
       }
-    )
+    );
   }
-  return store
-}
+  return store;
+};

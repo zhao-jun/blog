@@ -3,3 +3,4 @@ server-dist
 client-dist
 node_modules
 build/
+/*.js

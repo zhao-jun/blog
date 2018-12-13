@@ -29,7 +29,12 @@ module.exports = {
         test: /\.(vue|js|jsx)$/,
         loader: 'eslint-loader',
         include,
-        enforce: 'pre'
+        enforce: 'pre',
+        options: {
+          // https://github.com/webpack-contrib/eslint-loader/issues/248
+          // eslint-loader v2.1.1存在BUG，目前固定版本v2.1.0
+          fix: true
+        }
       },
       {
         test: /\.vue$/,

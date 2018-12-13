@@ -1,4 +1,4 @@
-import { getHomeList } from '../../service/home'
+import { getHomeList } from '../../service/home';
 
 export default {
   namespaced: true,
@@ -7,17 +7,17 @@ export default {
     list: []
   },
   mutations: {
-    updateText (state, text) {
-      state.text = text
+    updateText(state, text) {
+      state.text = text;
     },
-    updateList (state, list) {
-      state.list = list
+    updateList(state, list) {
+      state.list = list;
     }
   },
   actions: {
-    async getHomeList ({ commit }) {
-      let data = await getHomeList()
-      commit('updateList', data)
+    async getHomeList({ commit }) {
+      let data = await getHomeList();
+      commit('updateList', data);
     }
   }
-}
+};

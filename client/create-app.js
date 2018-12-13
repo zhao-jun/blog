@@ -1,17 +1,17 @@
-import Vue from 'vue'
-import App from './app.vue'
-import VueRouter from 'vue-router'
-import Vuex from 'vuex'
-import './assets/images/d.jpg'
-import './assets/styles/test.less'
+import Vue from 'vue';
+import App from './app.vue';
+import VueRouter from 'vue-router';
+import Vuex from 'vuex';
+import './assets/images/d.jpg';
+import './assets/styles/test.less';
 
-import createRouter from './config/router'
-import createStore from './store/store'
+import createRouter from './config/router';
+import createStore from './store/store';
 
 // 避免状态单例
 // 导出一个工厂函数，用于创建新的应用程序、router 和 store 实例
-Vue.use(VueRouter)
-Vue.use(Vuex)
+Vue.use(VueRouter);
+Vue.use(Vuex);
 // 客户端数据预取
 // 存在问题：每次服务端渲染好后进入还会重新再请求一遍
 // 存在问题：路由组件重用还需要全局Vue.mixin
@@ -36,38 +36,40 @@ Vue.use(Vuex)
 // }
 // 解决路由组件重用asyncData执行问题
 Vue.mixin({
-  beforeRouteUpdate (to, from, next) {
-    const { asyncData } = this.$options
+  beforeRouteUpdate(to, from, next) {
+    const { asyncData } = this.$options;
     if (asyncData) {
       asyncData({
         store: this.$store,
         route: to
-      }).then(next).catch(next)
+      })
+        .then(next)
+        .catch(next);
     } else {
-      next()
+      next();
     }
   },
   // todo title修改
-  beforeRouteEnter (to, from, next) {
+  beforeRouteEnter(to, from, next) {
     /* 路由发生变化修改页面title */
-    if (!to.meta.title) next()
+    if (!to.meta.title) next();
     if (process.env.VUE_ENV === 'server') {
     } else {
-      document.title = to.meta.title
+      document.title = to.meta.title;
     }
-    next()
+    next();
   }
-})
+});
 
 export default () => {
-  const router = createRouter()
-  const store = createStore()
+  const router = createRouter();
+  const store = createStore();
 
   const app = new Vue({
     router,
     store,
     render: h => h(App)
-  })
+  });
 
-  return { app, router, store }
-}
+  return { app, router, store };
+};
