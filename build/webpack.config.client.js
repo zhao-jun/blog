@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const {include} = require('./paths')
+const {include} = require('./config')
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin') // vue-loader v15新增
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -63,7 +63,7 @@ if (isDev) {
             {
               loader: 'css-loader',
               options: {
-                modules: true,
+                // modules: true,
                 localIdentName,
                 camelCase: true // 驼峰
               }
@@ -71,7 +71,7 @@ if (isDev) {
             'postcss-loader',
             'less-loader'
           ],
-          include
+          // include
         }
       ]
     },
@@ -96,7 +96,7 @@ if (isDev) {
     module: {
       rules: [
         {
-          test: /\.less$/,
+          test: /\.(less|css)$/,
           // 生产环境提取css
           use: [
             process.env.NODE_ENV !== 'production'
@@ -106,7 +106,7 @@ if (isDev) {
             {
               loader: 'css-loader',
               options: {
-                modules: true,
+                // modules: true,
                 localIdentName,
                 camelCase: true // 驼峰
               }
@@ -114,7 +114,7 @@ if (isDev) {
             'postcss-loader',
             'less-loader'
           ],
-          include
+          // include
         }
       ]
     },

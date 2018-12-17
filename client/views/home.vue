@@ -1,15 +1,5 @@
 <template>
-  <div>
-    <ul>
-      <li>
-        <router-link to="/test">{{ text }}</router-link>
-      </li>
-      <li @click="updateText('change')">change text</li>
-    </ul>
-    <ul v-if="list.length">
-      <li v-for="item in list" :key="item.id">{{ item.text }}</li>
-    </ul>
-  </div>
+  <div>home</div>
 </template>
 
 <script>

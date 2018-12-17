@@ -1,31 +1,30 @@
 <template>
-  <div :class="$style.textA">
-    <Header :header="header" />
-    <router-view />
+  <div class="home">
+    <com-header />
+    <router-view class="content" />
+    <com-footer />
   </div>
 </template>
 
 <script>
-import Header from './layout/header.vue';
-
 export default {
-  components: {
-    Header
-  },
   data() {
-    return {
-      header: 'ssr header'
-    };
+    return {};
   },
   mounted() {}
 };
 </script>
 
-<style lang="less" scoped module>
-body {
-  color: blue;
-  .text-a {
-    transform: translateX(50px);
+<style lang="less" scoped>
+.home {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 800px;
+  margin: 0 auto;
+  .content {
+    flex: 1;
   }
 }
 </style>

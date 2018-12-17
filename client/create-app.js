@@ -2,9 +2,8 @@ import Vue from 'vue';
 import App from './app.vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
-import './assets/images/d.jpg';
-import './assets/styles/test.less';
-
+import './assets/styles/index.less';
+import './components/common';
 import createRouter from './config/router';
 import createStore from './store/store';
 

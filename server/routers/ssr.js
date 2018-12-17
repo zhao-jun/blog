@@ -1,11 +1,11 @@
-const Router = require('koa-router')
-const chalk = require('chalk')
-const path = require('path')
-const { createBundleRenderer } = require('vue-server-renderer')
-const templateRender = require('./template-render')
+const Router = require('koa-router');
+const chalk = require('chalk');
+const path = require('path');
+const { createBundleRenderer } = require('vue-server-renderer');
+const templateRender = require('./template-render');
 
 const handleSSR = async ctx => {
-  const clientManifest = require('../../client-dist/public/vue-ssr-client-manifest.json')
+  const clientManifest = require('../../client-dist/public/vue-ssr-client-manifest.json');
 
   // 手动注入
   const renderer = createBundleRenderer(
@@ -14,15 +14,15 @@ const handleSSR = async ctx => {
       inject: false,
       clientManifest
     }
-  )
+  );
   try {
-    await templateRender(ctx, renderer)
+    await templateRender(ctx, renderer);
   } catch (error) {
-    console.log(chalk.blue.bgRed.bold(error))
+    console.log(chalk.blue.bgRed.bold(error));
   }
-}
+};
 
-const router = new Router()
-router.get('*', handleSSR)
+const router = new Router();
+router.get('*', handleSSR);
 
-module.exports = router
+module.exports = router;

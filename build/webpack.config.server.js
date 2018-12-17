@@ -1,7 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
-const {include} = require('./paths')
+const {include} = require('./config')
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin') // vue-loader v15新增
 const basicConfig = require('./webpack.config.base')
@@ -9,11 +9,6 @@ const basicConfig = require('./webpack.config.base')
 // 服务器配置，是用于生成传递给 VueServerRenderer.createBundleRenderer 的 server bundle
 
 const isDev = process.env.NODE_ENV === 'development'
-
-// css module开发和生产命名区分
-// const localIdentName = isDev
-// ? '[path][name]-[local]-[hash:base64:5]'
-// : '[hash:base64:5]'
 
 // 便于以后统一修改路径
 const resolve = (dir) => path.join(__dirname, '..', dir)
@@ -50,7 +45,7 @@ module.exports = webpackMerge(basicConfig, {
   module: {
     rules: [
       {
-        test: /\.less$/,
+        test: /\.(less|css)$/,
         use: [
           // 不用提取，直接引入客户端打包静态
           'vue-style-loader',
@@ -58,7 +53,7 @@ module.exports = webpackMerge(basicConfig, {
           'postcss-loader',
           'less-loader'
         ],
-        include
+        // include
       }
     ]
   },
