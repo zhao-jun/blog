@@ -6,7 +6,13 @@ import './assets/styles/index.less';
 import './components/common';
 import createRouter from './config/router';
 import createStore from './store/store';
-
+import { Menu, MenuItem, Submenu, Notification, Card } from 'element-ui';
+Vue.component(Menu.name, Menu);
+Vue.component(MenuItem.name, MenuItem);
+Vue.component(Submenu.name, Submenu);
+Vue.component(Card.name, Card);
+Vue.component(Notification.name, Notification);
+Vue.prototype.$notify = Notification;
 // 避免状态单例
 // 导出一个工厂函数，用于创建新的应用程序、router 和 store 实例
 Vue.use(VueRouter);

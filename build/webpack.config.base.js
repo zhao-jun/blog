@@ -1,6 +1,6 @@
 const path = require('path')
 const {include} = require('./config')
-var utils = require('./utils')
+const utils = require('./utils')
 
 // 便于以后统一修改路径
 const resolve = (dir) => path.join(__dirname, '..', dir)
@@ -67,11 +67,15 @@ module.exports = {
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
-        options: {
-          limit: 10000,
-          name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
-        }
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+            }
+          }
+        ]
       }
     ]
   }

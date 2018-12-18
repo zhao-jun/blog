@@ -1,5 +1,22 @@
 <template>
-  <div>home</div>
+  <div class="home-container">
+    <el-card class="box-card" shadow="hover">
+      <div slot="header" class="clearfix"><span>文章标题</span></div>
+      <div v-for="o in 3" :key="o" class="text item">{{ '文章内容 ' + o }}</div>
+    </el-card>
+    <el-card class="box-card" shadow="hover">
+      <div slot="header" class="clearfix"><span>文章标题</span></div>
+      <div v-for="o in 3" :key="o" class="text item">{{ '文章内容 ' + o }}</div>
+    </el-card>
+    <el-card class="box-card" shadow="hover">
+      <div slot="header" class="clearfix"><span>文章标题</span></div>
+      <div v-for="o in 3" :key="o" class="text item">{{ '文章内容 ' + o }}</div>
+    </el-card>
+    <el-card class="box-card" shadow="hover">
+      <div slot="header" class="clearfix"><span>文章标题</span></div>
+      <div v-for="o in 3" :key="o" class="text item">{{ '文章内容 ' + o }}</div>
+    </el-card>
+  </div>
 </template>
 
 <script>
@@ -22,3 +39,11 @@ export default {
   }
 };
 </script>
+
+<style lang="less" scoped>
+.home-container {
+  .box-card {
+    margin-top: 30px;
+  }
+}
+</style>

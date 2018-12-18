@@ -17,6 +17,15 @@ export default [
     }
   },
   {
+    path: '/plugin',
+    // 懒加载，此处接收函数
+    component: () => import('../views/home.vue'),
+    name: 'plugin',
+    meta: {
+      title: 'plugin'
+    }
+  },
+  {
     path: '/404',
     component: () => import('../views/not-found.vue'),
     name: '404',

@@ -17,14 +17,13 @@ export default {
 
 <style lang="less" scoped>
 .home {
-  position: relative;
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 800px;
-  margin: 0 auto;
   .content {
     flex: 1;
+    width: 800px;
+    margin: 0 auto;
   }
 }
 </style>

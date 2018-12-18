@@ -4,6 +4,8 @@
 
 <style lang="less" scoped>
 footer {
+  height: 100px;
+  line-height: 100px;
   width: 100%;
   color: #666;
   text-align: center;
