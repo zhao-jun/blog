@@ -12,7 +12,7 @@ const successResponse = data => {
 };
 
 // Mock，此处可以请求端口、数据库
-apiRouter.get('/home/list', ctx => {
+apiRouter.get('/blog/list', ctx => {
   let list = [
     {
       id: 1,
@@ -28,6 +28,12 @@ apiRouter.get('/home/list', ctx => {
     }
   ];
   ctx.body = successResponse(list);
+});
+
+// Mock，此处可以请求端口、数据库
+apiRouter.get('/blog/detail', ctx => {
+  let content = '# 标题';
+  ctx.body = successResponse(content);
 });
 
 module.exports = apiRouter;

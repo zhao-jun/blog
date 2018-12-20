@@ -21,13 +21,13 @@ export default () => {
         // './mutations',
         // './actions',
         // './getters',
-        './modules/home'
+        './modules/blog/detail'
       ],
       () => {
         // const newMutations = require('./mutations').default
         // const newActions = require('./actions').default
         // const newGetters = require('./getters').default
-        const newModulesHome = require('./modules/home').default;
+        const newModulesBlogDetail = require('./modules/blog/detail').default;
 
         store.hotUpdate({
           // mutations: newMutations,
@@ -35,7 +35,7 @@ export default () => {
           // actions: newActions,
           modules: {
             // 模块实现热重载必须单个写
-            newModulesHome
+            newModulesBlogDetail
           }
         });
       }

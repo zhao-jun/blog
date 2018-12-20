@@ -16,11 +16,11 @@
       >
       <el-menu-item index="2"
         ><router-link to="/plugin" class="header-link"
-          >插件</router-link
+          >工具</router-link
         ></el-menu-item
       >
       <el-menu-item index="1"
-        ><router-link exact to="/home" class="header-link"
+        ><router-link exact :to="routes.home.path" class="header-link"
           >首页</router-link
         ></el-menu-item
       >
@@ -29,18 +29,17 @@
 </template>
 
 <script>
-// import { menu } from 'element-ui';
+import routes from '@/config/routes';
 export default {
-  // components() {
-  //   menu;
-  // },
   data() {
     return {
-      activeIndex: '1'
+      activeIndex: '1', // TODO
+      routes
     };
   },
   methods: {
     handleSelect(key, keyPath) {
+      // TODO
       console.log(key, keyPath);
     }
   }

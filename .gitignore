@@ -63,3 +63,4 @@ typings/
 dist
 server-dist
 client-dist
+/blog

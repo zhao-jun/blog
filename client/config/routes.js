@@ -1,5 +1,5 @@
-export default [
-  {
+const routes = {
+  test: {
     path: '/test/:id?',
     component: () => import('../views/test.vue'),
     name: 'test',
@@ -7,25 +7,31 @@ export default [
       title: 'test'
     }
   },
-  {
+  home: {
     path: '/',
-    // 懒加载，此处接收函数
-    component: () => import('../views/home.vue'),
+    component: () => import('../views/blog/list'),
     name: 'home',
     meta: {
       title: 'home'
     }
   },
-  {
-    path: '/plugin',
-    // 懒加载，此处接收函数
-    component: () => import('../views/home.vue'),
-    name: 'plugin',
+  blogList: {
+    path: '/blog/list',
+    component: () => import('../views/blog/list'),
+    name: 'blogList',
     meta: {
-      title: 'plugin'
+      title: 'home'
     }
   },
-  {
+  blogDetail: {
+    path: '/blog/detail',
+    component: () => import('../views/blog/detail'),
+    name: 'blog',
+    meta: {
+      title: 'blog'
+    }
+  },
+  '404': {
     path: '/404',
     component: () => import('../views/not-found.vue'),
     name: '404',
@@ -33,8 +39,10 @@ export default [
       title: '404'
     }
   },
-  {
+  redirect: {
     path: '*',
-    redirect: '/404'
+    redirect: '/'
   }
-];
+};
+
+export default routes;
