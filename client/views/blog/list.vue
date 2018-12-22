@@ -2,24 +2,18 @@
   <div class="blog-list-container">
     <com-loading v-if="loading" />
     <el-card
-      class="box-card"
       shadow="hover"
-      v-for="o in 3"
-      :key="o"
+      v-for="item in list"
+      :key="item.id"
       @click.native="detail"
     >
       <div slot="header" class="clearfix">
         <div class="blog-header">
-          <span class="blog-title">文章标题</span>
-          <span class="blog-date">2018-12-20</span>
+          <span class="blog-title">{{ item.title }}</span>
+          <span class="blog-date">{{ item.date }}</span>
         </div>
       </div>
-      <div v-for="o in 3" :key="o" class="blog-summary">
-        {{
-          '文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容' +
-            o
-        }}
-      </div>
+      <div class="blog-summary">{{ item.summary }}</div>
     </el-card>
   </div>
 </template>

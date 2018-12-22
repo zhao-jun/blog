@@ -3,7 +3,7 @@ import { getBlogList } from '@/service/blog';
 export default {
   namespaced: true,
   state: {
-    list: '',
+    list: [],
     loading: true
   },
   mutations: {
