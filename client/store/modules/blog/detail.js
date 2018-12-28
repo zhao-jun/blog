@@ -7,15 +7,16 @@ export default {
     loading: true
   },
   mutations: {
-    updateContent(state, content) {
-      state.content = content;
+    updateContent(state, res) {
+      state.content = res.content;
       state.loading = false;
     }
   },
   actions: {
     async getBlogDetail({ commit, state }, params) {
-      let content = await getBlogDetail(params);
-      commit('updateContent', content);
+      let res = await getBlogDetail(params);
+      console.log(res);
+      commit('updateContent', res);
     }
   }
 };

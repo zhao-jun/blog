@@ -7,6 +7,8 @@ const apiRouter = require('./routers/api');
 const staticRouter = require('./routers/static');
 const renderRouter = require('./routers/render');
 
+const loggerMiddleware = require('./middleware/log');
+
 const app = new Koa();
 
 // 可以使用ejs等其他模版
@@ -17,6 +19,8 @@ render(app, {
 });
 
 const isDev = process.env.NODE_ENV === 'development';
+
+app.use(loggerMiddleware());
 
 // favicon处理
 app.use(async (ctx, next) => {
