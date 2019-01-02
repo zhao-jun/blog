@@ -1,7 +1,10 @@
-const sequelize = require('./../config/db');
-const BlogModel = sequelize.import('../model/blog.js');
+const sequelize = require('../config/db');
+const BlogModel = sequelize.import('../model/blog/blog');
+const TagModel = sequelize.import('../model/blog/tag');
 
+// 创建表
 BlogModel.sync({ force: false });
+TagModel.sync({ force: false });
 
 module.exports = class BlogService {
   /**
@@ -17,6 +20,16 @@ module.exports = class BlogService {
       category: data.category,
       banner: data.banner,
       content: data.content
+    });
+  }
+  /**
+   * 创建标签
+   * @param data
+   * @returns {Promise<*>}
+   */
+  static async createTag(data) {
+    return await TagModel.create({
+      name: data.name
     });
   }
 

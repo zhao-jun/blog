@@ -9,14 +9,24 @@
       text-color="#fff"
       active-text-color="#ffd04b"
     >
-      <el-menu-item index="3"
+      <el-menu-item index="5"
+        ><router-link to="/plugin" class="header-link"
+          >工具</router-link
+        ></el-menu-item
+      >
+      <el-menu-item index="4"
         ><router-link to="/other" class="header-link"
           >其他</router-link
         ></el-menu-item
       >
+      <el-menu-item index="3"
+        ><router-link to="/plugin" class="header-link"
+          >Node</router-link
+        ></el-menu-item
+      >
       <el-menu-item index="2"
         ><router-link to="/plugin" class="header-link"
-          >工具</router-link
+          >前端</router-link
         ></el-menu-item
       >
       <el-menu-item index="1"

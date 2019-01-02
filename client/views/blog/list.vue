@@ -5,7 +5,7 @@
       shadow="hover"
       v-for="item in list"
       :key="item.id"
-      @click.native="detail"
+      @click.native="detail(item)"
     >
       <div slot="header" class="clearfix">
         <div class="blog-header">
@@ -26,7 +26,7 @@ const { mapState, mapMutations, mapActions } = createNamespacedHelpers(
 );
 
 export default {
-  asyncData({ store, router }) {
+  asyncData({ store, route }) {
     return store.dispatch('blog/list/getBlogList');
   },
   computed: {
@@ -38,8 +38,8 @@ export default {
   methods: {
     // ...mapMutations(['updateText']),
     ...mapActions(['getHomeList']),
-    detail() {
-      this.$router.push(routes.blogDetail.path);
+    detail(item) {
+      this.$router.push(`${routes.blogDetail.pushPath}/${item.id}`);
     }
   }
 };
@@ -47,6 +47,7 @@ export default {
 
 <style lang="less" scoped>
 .blog-list-container {
+  padding-top: 30px;
   .blog-header {
     display: flex;
     justify-content: space-between;
@@ -62,8 +63,10 @@ export default {
     font-size: 14px;
     line-height: 1.5;
   }
+  .el-card + .el-card {
+    margin-top: 10px;
+  }
   .el-card {
-    margin-top: 30px;
     cursor: pointer;
   }
 }

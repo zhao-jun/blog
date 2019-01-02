@@ -7,7 +7,8 @@
 
 <script>
 import marked from 'marked';
-import 'github-markdown-css';
+// 服务端直接渲染无法解析
+// import 'github-markdown-css';
 import { createNamespacedHelpers } from 'vuex';
 const { mapState, mapMutations, mapActions } = createNamespacedHelpers(
   'blog/detail'
@@ -28,15 +29,18 @@ const markedOptions = {
 };
 
 export default {
+  // 数据预取
+  asyncData({ store, route }) {
+    return store.dispatch('blog/detail/getBlogDetail', {
+      id: route.params.id
+    });
+  },
   computed: {
     ...mapState(['content', 'loading']),
     compiledMarkdown() {
       if (!this.content) return '';
       return marked(this.content);
     }
-  },
-  asyncData({ store, router }) {
-    return store.dispatch('blog/detail/getBlogDetail', { id: '1' });
   },
   methods: {
     ...mapActions(['getBlogDetail'])
@@ -45,6 +49,7 @@ export default {
 </script>
 
 <style lang="less">
+@import '../../../node_modules/github-markdown-css/github-markdown.css';
 .markdown-body {
   box-sizing: border-box;
   min-width: 200px;

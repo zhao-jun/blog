@@ -24,7 +24,8 @@ const routes = {
     }
   },
   blogDetail: {
-    path: '/blog/detail',
+    path: '/blog/detail/:id',
+    pushPath: '/blog/detail',
     component: () => import('../views/blog/detail'),
     name: 'blog',
     meta: {
