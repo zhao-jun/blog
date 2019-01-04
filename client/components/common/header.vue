@@ -2,6 +2,7 @@
   <header>
     <el-menu
       :default-active="activeIndex"
+      router
       class="el-menu-demo"
       mode="horizontal"
       @select="handleSelect"
@@ -29,7 +30,7 @@
           >前端</router-link
         ></el-menu-item
       >
-      <el-menu-item index="1"
+      <el-menu-item index="home"
         ><router-link exact :to="routes.home.path" class="header-link"
           >首页</router-link
         ></el-menu-item
@@ -43,7 +44,7 @@ import routes from '@/config/routes';
 export default {
   data() {
     return {
-      activeIndex: '1', // TODO
+      activeIndex: 'home', // TODO
       routes
     };
   },

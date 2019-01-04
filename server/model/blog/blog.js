@@ -15,29 +15,34 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         unique: true
       },
-      // // 博客作者
-      // author: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false
-      // },
-      // // 博客介绍
-      // introduce: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false
-      // },
-      // // 博客分类
-      // category: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false
-      // },
-      // // 博客封面
-      // banner: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false
-      // },
+      // 博客作者
+      author: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      // 博客介绍
+      introduce: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      // 博客分类
+      category: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      // 博客封面
+      banner: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
       // 博客内容
       content: {
         type: DataTypes.TEXT,
+        allowNull: false
+      },
+      // 标签
+      tags: {
+        type: DataTypes.INTEGER,
         allowNull: false
       },
       // 浏览次数

@@ -3,9 +3,10 @@ const send = require('koa-send');
 const path = require('path');
 const render = require('koa-art-template');
 
-const apiRouter = require('./routers/api');
-const staticRouter = require('./routers/static');
-const renderRouter = require('./routers/render');
+// const apiRouter = require('./routers/api');
+// const staticRouter = require('./routers/static');
+// const renderRouter = require('./routers/render');
+const routers = require('./routers');
 
 const loggerMiddleware = require('./middleware/log');
 
@@ -30,9 +31,10 @@ app.use(async (ctx, next) => {
     await next();
   }
 });
-app.use(staticRouter.routes()).use(staticRouter.allowedMethods());
-app.use(apiRouter.routes()).use(apiRouter.allowedMethods());
-app.use(renderRouter.routes()).use(renderRouter.allowedMethods());
+// app.use(staticRouter.routes()).use(staticRouter.allowedMethods());
+// app.use(apiRouter.routes()).use(apiRouter.allowedMethods());
+// app.use(renderRouter.routes()).use(renderRouter.allowedMethods());
+app.use(routers.routes()).use(routers.allowedMethods());
 
 const HOST = process.env.HOST || '127.0.0.1';
 const PORT = process.env.PORT || 3030;

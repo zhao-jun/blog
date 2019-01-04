@@ -8,7 +8,8 @@ export default {
   },
   mutations: {
     updateContent(state, res) {
-      state.content = res.content;
+      // TODO
+      state.content = res && res.content;
       state.loading = false;
     }
   },

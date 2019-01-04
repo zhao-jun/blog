@@ -3,8 +3,8 @@ const BlogModel = sequelize.import('../model/blog/blog');
 const TagModel = sequelize.import('../model/blog/tag');
 
 // 创建表
-BlogModel.sync({ force: false });
-TagModel.sync({ force: false });
+BlogModel.sync({ force: false, alter: true });
+TagModel.sync({ force: false, alter: true });
 
 module.exports = class BlogService {
   /**
