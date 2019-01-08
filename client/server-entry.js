@@ -15,7 +15,7 @@ export default context =>
       Promise.all(
         matchedComponents.map(Component => {
           if (Component.asyncData) {
-            // asyncData参数
+            // asyncData 参数
             return Component.asyncData({
               store,
               route: router.currentRoute
@@ -23,9 +23,9 @@ export default context =>
           }
         })
       ).then(_ => {
-        // 将已经渲染好的状态store放入上下文
+        // 将已经渲染好的状态 store 放入上下文
         context.state = store.state;
-        // todo 存在问题：如果不存在title的时候要设置默认title
+        // todo 存在问题：如果不存在 title 的时候要设置默认 title
         context.title = router.currentRoute.meta.title || 'Document';
         resolve(app);
       });

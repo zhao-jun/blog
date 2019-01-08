@@ -65,10 +65,13 @@ Vue.mixin({
   // todo title修改
   beforeRouteEnter(to, from, next) {
     /* 路由发生变化修改页面title */
-    if (!to.meta.title) next();
-    if (process.env.VUE_ENV === 'server') {
+    // TODO: next 发生了什么？
+    if (!to.meta.title) {
     } else {
-      document.title = to.meta.title;
+      if (process.env.VUE_ENV === 'server') {
+      } else {
+        document.title = to.meta.title;
+      }
     }
     next();
   }

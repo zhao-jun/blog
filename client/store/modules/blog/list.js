@@ -4,17 +4,19 @@ export default {
   namespaced: true,
   state: {
     list: [],
+    total: '',
     loading: true
   },
   mutations: {
-    updateList(state, list) {
-      state.list = list;
+    updateList(state, data) {
+      state.list = data.blogList;
+      state.total = data.total;
       state.loading = false;
     }
   },
   actions: {
-    async getBlogList({ commit }) {
-      let data = await getBlogList();
+    async getBlogList({ commit }, params) {
+      let data = await getBlogList(params);
       commit('updateList', data);
     }
   }

@@ -16,7 +16,6 @@ export default {
   actions: {
     async getBlogDetail({ commit, state }, params) {
       let res = await getBlogDetail(params);
-      console.log(res);
       commit('updateContent', res);
     }
   }

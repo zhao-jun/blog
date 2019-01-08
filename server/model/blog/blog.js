@@ -40,11 +40,6 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.TEXT,
         allowNull: false
       },
-      // 标签
-      tags: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-      },
       // 浏览次数
       browser: {
         type: DataTypes.INTEGER,

@@ -7,6 +7,7 @@ const routes = {
       title: 'test'
     }
   },
+  // 首页路由分开写因为title展示不同
   home: {
     path: '/',
     component: () => import('../views/blog/list'),
@@ -15,12 +16,39 @@ const routes = {
       title: 'home'
     }
   },
-  blogList: {
-    path: '/blog/list',
+  fe: {
+    path: '/fe',
     component: () => import('../views/blog/list'),
-    name: 'blogList',
+    name: 'fe',
     meta: {
-      title: 'home'
+      title: 'FE',
+      category: 1
+    }
+  },
+  nodejs: {
+    path: '/nodejs',
+    component: () => import('../views/blog/list'),
+    name: 'nodejs',
+    meta: {
+      title: 'Node.js',
+      category: 2
+    }
+  },
+  other: {
+    path: '/other',
+    component: () => import('../views/blog/list'),
+    name: 'other',
+    meta: {
+      title: 'other',
+      category: 3
+    }
+  },
+  utils: {
+    path: '/utils',
+    component: () => import('../views/blog/list'),
+    name: 'utils',
+    meta: {
+      title: 'utils'
     }
   },
   blogDetail: {

@@ -10,10 +10,10 @@
       <div slot="header" class="clearfix">
         <div class="blog-header">
           <span class="blog-title">{{ item.title }}</span>
-          <span class="blog-date">{{ item.date }}</span>
+          <span class="blog-date">{{ item.createdAt }}</span>
         </div>
       </div>
-      <div class="blog-summary">{{ item.summary }}</div>
+      <div class="blog-summary">{{ item.introduce }}</div>
     </el-card>
   </div>
 </template>
@@ -27,17 +27,17 @@ const { mapState, mapMutations, mapActions } = createNamespacedHelpers(
 
 export default {
   asyncData({ store, route }) {
-    return store.dispatch('blog/list/getBlogList');
+    return store.dispatch('blog/list/getBlogList', {
+      category: route.meta.category
+    });
   },
   computed: {
-    ...mapState(['list', 'loading'])
+    ...mapState(['list', 'total', 'loading'])
   },
-  mounted() {
-    // this.getHomeList()
-  },
+  mounted() {},
   methods: {
     // ...mapMutations(['updateText']),
-    ...mapActions(['getHomeList']),
+    // ...mapActions(['getBlogList']),
     detail(item) {
       this.$router.push(`${routes.blogDetail.pushPath}/${item.id}`);
     }

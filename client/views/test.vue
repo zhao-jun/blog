@@ -13,7 +13,7 @@
 <script>
 export default {
   props: ['id'],
-  asyncData() {
+  asyncData({ store, route }) {
     return new Promise(resolve => {
       resolve();
     });

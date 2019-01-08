@@ -1,8 +1,8 @@
 <template>
   <header>
+    <!-- router -->
     <el-menu
       :default-active="activeIndex"
-      router
       class="el-menu-demo"
       mode="horizontal"
       @select="handleSelect"
@@ -10,27 +10,27 @@
       text-color="#fff"
       active-text-color="#ffd04b"
     >
-      <el-menu-item index="5"
-        ><router-link to="/plugin" class="header-link"
+      <!-- <el-menu-item index="4"
+        ><router-link :to="routes.utils.path" class="header-link"
           >工具</router-link
         ></el-menu-item
-      >
-      <el-menu-item index="4"
-        ><router-link to="/other" class="header-link"
+      > -->
+      <el-menu-item :index="routes.other.path"
+        ><router-link :to="routes.other.path" class="header-link"
           >其他</router-link
         ></el-menu-item
       >
-      <el-menu-item index="3"
-        ><router-link to="/plugin" class="header-link"
-          >Node</router-link
+      <el-menu-item :index="routes.nodejs.path"
+        ><router-link :to="routes.nodejs.path" class="header-link"
+          >Node.js</router-link
         ></el-menu-item
       >
-      <el-menu-item index="2"
-        ><router-link to="/plugin" class="header-link"
+      <el-menu-item :index="routes.fe.path"
+        ><router-link :to="routes.fe.path" class="header-link"
           >前端</router-link
         ></el-menu-item
       >
-      <el-menu-item index="home"
+      <el-menu-item :index="routes.home.path"
         ><router-link exact :to="routes.home.path" class="header-link"
           >首页</router-link
         ></el-menu-item
@@ -41,17 +41,24 @@
 
 <script>
 import routes from '@/config/routes';
+import { createNamespacedHelpers } from 'vuex';
+const { mapState, mapMutations, mapActions } = createNamespacedHelpers(
+  'blog/list'
+);
+
 export default {
   data() {
     return {
-      activeIndex: 'home', // TODO
+      activeIndex: this.$route.path, // TODO
       routes
     };
   },
   methods: {
+    ...mapActions(['getBlogList']),
     handleSelect(key, keyPath) {
-      // TODO
-      console.log(key, keyPath);
+      if (this.$route.meta.category)
+        return this.getBlogList({ category: this.$route.meta.category });
+      this.getBlogList();
     }
   }
 };

@@ -1,10 +1,15 @@
 const sequelize = require('../config/db');
 const BlogModel = sequelize.import('../model/blog/blog');
-const TagModel = sequelize.import('../model/blog/tag');
+const CategoryModel = sequelize.import('../model/blog/category');
 
 // 创建表
 BlogModel.sync({ force: false, alter: true });
-TagModel.sync({ force: false, alter: true });
+CategoryModel.sync({ force: true, alter: true }).then(() => {
+  return CategoryModel.bulkCreate([
+    { id: 1, name: '前端' },
+    { id: 2, name: 'Node.js' }
+  ]);
+});
 
 module.exports = class BlogService {
   /**
@@ -31,6 +36,26 @@ module.exports = class BlogService {
     return await TagModel.create({
       name: data.name
     });
+  }
+
+  /**
+   * 获取博客列表
+   */
+  static async getBlogList(params) {
+    const { page = 1, category, title } = params;
+    let config = {
+      limit: 10, //每页10条
+      offset: (page - 1) * 10,
+      order: [['id', 'DESC']],
+      attributes: { exclude: ['content', 'browser', 'author', 'banner'] }
+    };
+    if (category) config.where = { category };
+    if (title) config.where = { title };
+    let result = await BlogModel.findAndCountAll(config);
+    return {
+      total: result.count,
+      blogList: result.rows
+    };
   }
 
   /**

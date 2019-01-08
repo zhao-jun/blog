@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define(
-    'tag',
+    'category',
     {
       // 标签ID
       id: {
