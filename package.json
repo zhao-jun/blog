@@ -73,6 +73,7 @@
     "lint-staged": "^7.2.2",
     "memory-fs": "^0.4.1",
     "mini-css-extract-plugin": "^0.4.2",
+    "moment": "^2.23.0",
     "mysql2": "^1.6.4",
     "nodemon": "^1.18.3",
     "postcss-loader": "^3.0.0",

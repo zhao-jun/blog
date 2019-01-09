@@ -40,7 +40,7 @@ const routes = {
     name: 'other',
     meta: {
       title: 'other',
-      category: 3
+      category: 9
     }
   },
   utils: {

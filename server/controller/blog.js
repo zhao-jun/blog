@@ -9,7 +9,6 @@ exports.getBlogList = async ctx => {
 };
 
 exports.getBlogDetail = async ctx => {
-  console.log(ctx.query, ctx.params, 'test');
   let param = ctx.query;
   if (param.id) {
     let data = await BlogService.getBlogDetail(param.id);

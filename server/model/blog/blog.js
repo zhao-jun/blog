@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define(
     'blog',
@@ -12,8 +14,8 @@ module.exports = function(sequelize, DataTypes) {
       // 博客标题
       title: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
+        allowNull: false
+        // unique: true
       },
       // 博客作者
       author: {
@@ -45,10 +47,26 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.INTEGER,
         allowNull: true,
         defaultValue: 0
+      },
+      createdAt: {
+        type: DataTypes.DATE
+        // get() {
+        //   return moment(this.getDataValue('createdAt')).format('YYYY-MM-DD');
+        // }
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        get() {
+          return moment(this.getDataValue('updatedAt')).format('YYYY-MM-DD');
+        }
       }
     },
     {
-      timestamps: true // 时间戳默认为true
+      // 时间戳默认为true
+      timestamps: true,
+      // 默认为 false, MySQL 创建的表名称会是复数 blogs
+      // true 则表的名称和 model 相同，即 blog
+      freezeTableName: true
     }
   );
 };

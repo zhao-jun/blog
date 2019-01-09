@@ -1,14 +1,12 @@
 const sequelize = require('../config/db');
 const BlogModel = sequelize.import('../model/blog/blog');
 const CategoryModel = sequelize.import('../model/blog/category');
+const { categoryList } = require('../config');
 
 // 创建表
 BlogModel.sync({ force: false, alter: true });
 CategoryModel.sync({ force: true, alter: true }).then(() => {
-  return CategoryModel.bulkCreate([
-    { id: 1, name: '前端' },
-    { id: 2, name: 'Node.js' }
-  ]);
+  return CategoryModel.bulkCreate(categoryList);
 });
 
 module.exports = class BlogService {
@@ -47,9 +45,24 @@ module.exports = class BlogService {
       limit: 10, //每页10条
       offset: (page - 1) * 10,
       order: [['id', 'DESC']],
-      attributes: { exclude: ['content', 'browser', 'author', 'banner'] }
+      attributes: {
+        exclude: [
+          'category',
+          'content',
+          'browser',
+          'author',
+          'banner',
+          'createdAt'
+        ]
+      }
     };
-    if (category) config.where = { category };
+    // SELECT * FROM blogs WHERE FIND_IN_SET('1',category)
+    if (category)
+      config.where = sequelize.where(
+        sequelize.fn('FIND_IN_SET', category, sequelize.col('category')),
+        '>',
+        0
+      );
     if (title) config.where = { title };
     let result = await BlogModel.findAndCountAll(config);
     return {
@@ -64,9 +77,14 @@ module.exports = class BlogService {
    * @returns {Promise<Model>}
    */
   static async getBlogDetail(id) {
+    BlogModel.increment(['browser'], { by: 1, where: { id } });
+
     return await BlogModel.findOne({
       where: {
         id
+      },
+      attributes: {
+        exclude: ['id', 'category', 'browser', 'author', 'banner', 'createdAt']
       }
     });
   }

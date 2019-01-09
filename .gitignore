@@ -64,5 +64,5 @@ dist
 server-dist
 client-dist
 /blog
-server/config/index.js
+server/config/db-config.js
 server/middleware/log.txt
