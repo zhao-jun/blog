@@ -21,23 +21,24 @@
 <script>
 import { createNamespacedHelpers } from 'vuex';
 import routes from '@/config/routes';
-const { mapState, mapMutations, mapActions } = createNamespacedHelpers(
-  'blog/list'
-);
+const blogVuex = createNamespacedHelpers('blog/list');
+const categoryVuex = createNamespacedHelpers('blog/category');
 
 export default {
   asyncData({ store, route }) {
-    return store.dispatch('blog/list/getBlogList', {
+    store.dispatch('blog/list/getBlogList', {
       category: route.meta.category
     });
+    store.dispatch('blog/category/getCategoryList');
   },
   computed: {
-    ...mapState(['list', 'total', 'loading'])
+    ...blogVuex.mapState(['list', 'total', 'loading']),
+    ...categoryVuex.mapState(['category'])
   },
   mounted() {},
   methods: {
-    // ...mapMutations(['updateText']),
-    // ...mapActions(['getBlogList']),
+    // ...blogVuex.mapMutations(['updateText']),
+    // ...blogVuex.mapActions(['getBlogList']),
     detail(item) {
       this.$router.push(`${routes.blogDetail.pushPath}/${item.id}`);
     }

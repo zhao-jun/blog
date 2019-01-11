@@ -5,9 +5,6 @@ const { categoryList } = require('../config');
 
 // 创建表
 BlogModel.sync({ force: false, alter: true });
-CategoryModel.sync({ force: true, alter: true }).then(() => {
-  return CategoryModel.bulkCreate(categoryList);
-});
 
 module.exports = class BlogService {
   /**
@@ -87,5 +84,12 @@ module.exports = class BlogService {
         exclude: ['id', 'category', 'browser', 'author', 'banner', 'createdAt']
       }
     });
+  }
+
+  /**
+   * 获取标签列表
+   */
+  static async getCategoryList() {
+    return await CategoryModel.findAll();
   }
 };

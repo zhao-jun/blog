@@ -45,7 +45,8 @@ const devServer = {
     index: '/public/index.html'
   },
   proxy: {
-    '/api': 'http://127.0.0.1:3030'
+    // A request to /backend will now proxy the request to http://localhost:3000/backend.
+    '/backend': 'http://127.0.0.1:3030'
   },
 }
 

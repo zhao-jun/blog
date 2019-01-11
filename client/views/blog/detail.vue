@@ -29,8 +29,15 @@ marked.setOptions({
   smartLists: true,
   smartypants: true,
   langPrefix: 'hljs ',
+  // highlight: function(code) {
+  //   return hljs.highlightAuto(code).value;
+  // }
   highlight: function(code) {
-    return hljs.highlightAuto(code).value;
+    return `<ul>${hljs
+      .highlightAuto(code)
+      .value.split('\n')
+      .map(i => `<li>${i}</li>`)
+      .join('')}</ul>`;
   }
 });
 
