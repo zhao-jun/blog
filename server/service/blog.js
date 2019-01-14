@@ -37,10 +37,10 @@ module.exports = class BlogService {
    * 获取博客列表
    */
   static async getBlogList(params) {
-    const { page = 1, category, title } = params;
+    const { page = 1, rows = 10, category, title } = params;
     let config = {
-      limit: 10, //每页10条
-      offset: (page - 1) * 10,
+      limit: +rows, // 每页默认10条
+      offset: (page - 1) * rows,
       order: [['id', 'DESC']],
       attributes: {
         exclude: [

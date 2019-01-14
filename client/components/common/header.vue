@@ -3,18 +3,17 @@
     <!-- router -->
     <el-menu
       :default-active="activeIndex"
-      class="el-menu-demo"
       mode="horizontal"
       @select="handleSelect"
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
     >
-      <!-- <el-menu-item index="4"
+      <el-menu-item :index="routes.utils.path"
         ><router-link :to="routes.utils.path" class="header-link"
           >工具</router-link
         ></el-menu-item
-      > -->
+      >
       <el-menu-item :index="routes.other.path"
         ><router-link :to="routes.other.path" class="header-link"
           >其他</router-link

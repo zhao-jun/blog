@@ -1,20 +1,32 @@
 <template>
   <div class="blog-list-container">
     <com-loading v-if="loading" />
-    <el-card
-      shadow="hover"
-      v-for="item in list"
-      :key="item.id"
-      @click.native="detail(item)"
-    >
-      <div slot="header" class="clearfix">
-        <div class="blog-header">
-          <span class="blog-title">{{ item.title }}</span>
-          <span class="blog-date">{{ item.createdAt }}</span>
+    <div v-else>
+      <el-card
+        shadow="hover"
+        v-for="item in list"
+        :key="item.id"
+        @click.native="detail(item)"
+      >
+        <div slot="header" class="clearfix">
+          <div class="blog-header">
+            <span class="blog-title">{{ item.title }}</span>
+            <span class="blog-date">{{ item.updatedAt }}</span>
+          </div>
         </div>
-      </div>
-      <div class="blog-summary">{{ item.introduce }}</div>
-    </el-card>
+        <div class="blog-summary">{{ item.introduce }}</div>
+      </el-card>
+      <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="pagination.page"
+        :page-sizes="[5, 10, 15, 20]"
+        :page-size="pagination.rows"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="total"
+      >
+      </el-pagination>
+    </div>
   </div>
 </template>
 
@@ -32,15 +44,21 @@ export default {
     store.dispatch('blog/category/getCategoryList');
   },
   computed: {
-    ...blogVuex.mapState(['list', 'total', 'loading']),
+    ...blogVuex.mapState(['list', 'total', 'loading', 'pagination']),
     ...categoryVuex.mapState(['category'])
   },
   mounted() {},
   methods: {
-    // ...blogVuex.mapMutations(['updateText']),
-    // ...blogVuex.mapActions(['getBlogList']),
+    ...blogVuex.mapActions(['getBlogList']),
+    ...blogVuex.mapMutations([]),
     detail(item) {
       this.$router.push(`${routes.blogDetail.pushPath}/${item.id}`);
+    },
+    handleSizeChange(value) {
+      this.getBlogList({ rows: value });
+    },
+    handleCurrentChange(value) {
+      this.getBlogList({ page: value });
     }
   }
 };
@@ -63,6 +81,7 @@ export default {
     color: #ccc;
     font-size: 14px;
     line-height: 1.5;
+    height: 40px;
   }
   .el-card + .el-card {
     margin-top: 10px;
@@ -70,5 +89,12 @@ export default {
   .el-card {
     cursor: pointer;
   }
+  .el-pagination {
+    margin-top: 30px;
+    text-align: center;
+  }
+  // .el-pager .active {
+  //   color: #ffd04b;
+  // }
 }
 </style>

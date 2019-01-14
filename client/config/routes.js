@@ -45,11 +45,17 @@ const routes = {
   },
   utils: {
     path: '/utils',
-    component: () => import('../views/blog/list'),
+    component: () => import('../views/utils/list'),
     name: 'utils',
     meta: {
       title: 'utils'
-    }
+    },
+    children: [
+      {
+        path: 'test',
+        component: () => import('../views/utils/test')
+      }
+    ]
   },
   blogDetail: {
     path: '/blog/detail/:id',
