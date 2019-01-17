@@ -13,7 +13,8 @@ const routes = {
     component: () => import('../views/blog/list'),
     name: 'home',
     meta: {
-      title: 'home'
+      title: 'home',
+      category: '0'
     }
   },
   fe: {
@@ -22,7 +23,7 @@ const routes = {
     name: 'fe',
     meta: {
       title: 'FE',
-      category: 1
+      category: '1'
     }
   },
   nodejs: {
@@ -31,7 +32,7 @@ const routes = {
     name: 'nodejs',
     meta: {
       title: 'Node.js',
-      category: 2
+      category: '2'
     }
   },
   other: {
@@ -40,12 +41,12 @@ const routes = {
     name: 'other',
     meta: {
       title: 'other',
-      category: 9
+      category: '9'
     }
   },
   utils: {
     path: '/utils',
-    component: () => import('../views/utils/list'),
+    component: () => import('../views/utils'),
     name: 'utils',
     meta: {
       title: 'utils'
@@ -53,7 +54,7 @@ const routes = {
     children: [
       {
         path: 'test',
-        component: () => import('../views/utils/test')
+        component: () => import('../views/utils/loading')
       }
     ]
   },

@@ -54,12 +54,15 @@ module.exports = class BlogService {
       }
     };
     // SELECT * FROM blogs WHERE FIND_IN_SET('1',category)
-    if (category)
+    // 0 则是全部
+    if (+category) {
       config.where = sequelize.where(
         sequelize.fn('FIND_IN_SET', category, sequelize.col('category')),
         '>',
         0
       );
+    }
+
     if (title) config.where = { title };
     let result = await BlogModel.findAndCountAll(config);
     return {

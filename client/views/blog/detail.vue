@@ -6,7 +6,7 @@
 </template>
 
 <script>
-// 0.5.2 版本存在解析问题，目前暂用 0.6.0
+// 0.5.2 版本存在解析问题，目前暂用 0.3.19
 import marked from 'marked';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/monokai-sublime.css';

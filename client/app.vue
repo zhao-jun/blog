@@ -1,7 +1,10 @@
 <template>
   <div class="home">
     <com-header />
-    <router-view class="content" />
+    <div class="center">
+      <router-view class="content" />
+      <!-- <div class="sidebar"><com-wxqr /></div> -->
+    </div>
     <com-footer />
   </div>
 </template>
@@ -19,11 +22,18 @@ export default {
 .home {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  .content {
+  min-height: 100vh;
+  .center {
     flex: 1;
-    width: 800px;
-    margin: 0 auto;
+    display: flex;
+    padding-top: 30px;
+    justify-content: center;
   }
+  // .content {
+  //   width: 72%;
+  // }
+  // .sidebar {
+  //   width: 28%;
+  // }
 }
 </style>

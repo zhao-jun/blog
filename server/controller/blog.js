@@ -1,5 +1,4 @@
 const response = require('../utils/response');
-const list = require('../../blog/list.json');
 const BlogService = require('../service/blog');
 
 exports.getBlogList = async ctx => {

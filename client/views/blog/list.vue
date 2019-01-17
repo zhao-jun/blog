@@ -1,7 +1,7 @@
 <template>
   <div class="blog-list-container">
     <com-loading v-if="loading" />
-    <div v-else>
+    <div class="blog-list-content" v-else>
       <el-card
         shadow="hover"
         v-for="item in list"
@@ -37,11 +37,11 @@ const blogVuex = createNamespacedHelpers('blog/list');
 const categoryVuex = createNamespacedHelpers('blog/category');
 
 export default {
-  asyncData({ store, route }) {
-    store.dispatch('blog/list/getBlogList', {
+  async asyncData({ store, route }) {
+    await store.dispatch('blog/category/getCategoryList');
+    await store.dispatch('blog/list/getBlogList', {
       category: route.meta.category
     });
-    store.dispatch('blog/category/getCategoryList');
   },
   computed: {
     ...blogVuex.mapState(['list', 'total', 'loading', 'pagination']),
@@ -66,7 +66,12 @@ export default {
 
 <style lang="less" scoped>
 .blog-list-container {
-  padding-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
+  .blog-list-content {
+    width: 800px;
+  }
   .blog-header {
     display: flex;
     justify-content: space-between;
@@ -83,18 +88,14 @@ export default {
     line-height: 1.5;
     height: 40px;
   }
+  // 卡片
   .el-card + .el-card {
     margin-top: 10px;
   }
-  .el-card {
-    cursor: pointer;
-  }
+  // 底部分页
   .el-pagination {
     margin-top: 30px;
     text-align: center;
   }
-  // .el-pager .active {
-  //   color: #ffd04b;
-  // }
 }
 </style>
