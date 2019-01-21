@@ -11,6 +11,7 @@ module.exports = new Sequelize(
     operatorsAliases: false,
     dialectOptions: {
       charset: 'utf8mb4',
+      // collate: 'utf8_general_ci',
       supportBigNumbers: true,
       bigNumberStrings: true
     },

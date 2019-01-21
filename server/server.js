@@ -36,7 +36,7 @@ app.use(async (ctx, next) => {
 // app.use(renderRouter.routes()).use(renderRouter.allowedMethods());
 app.use(routers.routes()).use(routers.allowedMethods());
 
-const HOST = process.env.HOST || '127.0.0.1';
+const HOST = process.env.HOST || '0.0.0.0';
 const PORT = process.env.PORT || 3030;
 
 app.listen(PORT, HOST, () => {
