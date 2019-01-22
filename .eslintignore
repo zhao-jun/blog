@@ -4,3 +4,4 @@ client-dist
 node_modules
 build/
 /*.js
+config/sw.tmpl.js

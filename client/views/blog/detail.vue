@@ -1,6 +1,7 @@
 <template>
   <div>
     <com-loading v-if="loading" />
+    <h1>{{ title }}</h1>
     <article class="markdown-body" v-html="compiledMarkdown"></article>
   </div>
 </template>
@@ -49,7 +50,7 @@ export default {
     });
   },
   computed: {
-    ...mapState(['content', 'loading']),
+    ...mapState(['title', 'content', 'loading']),
     compiledMarkdown() {
       if (!this.content) return '';
       return marked(this.content);
@@ -69,12 +70,12 @@ export default {
   min-width: 200px;
   max-width: 980px;
   margin: 0 auto;
-  padding: 45px;
+  padding: 20px 45px 45px;
 }
 
 @media (max-width: 767px) {
   .markdown-body {
-    padding: 15px;
+    padding: 10px 15px 15px;
   }
 }
 </style>

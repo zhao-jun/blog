@@ -23,10 +23,21 @@ const isDev = process.env.NODE_ENV === 'development';
 
 app.use(loggerMiddleware());
 
-// favicon处理
+// favicon 处理
 app.use(async (ctx, next) => {
   if (ctx.path === '/favicon.ico') {
     await send(ctx, ctx.path, { root: path.join(__dirname, '../') });
+  } else {
+    await next();
+  }
+});
+
+// service-worker 处理
+app.use(async (ctx, next) => {
+  if (ctx.path === '/service-worker.js') {
+    await send(ctx, ctx.path, {
+      root: path.join(__dirname, '../client-dist/public/')
+    });
   } else {
     await next();
   }

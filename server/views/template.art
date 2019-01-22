@@ -11,6 +11,13 @@
 <body>
   <div id="root">{{@appString}}</div>
   {{@initalState}}
+  <script>
+    (function() {
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js');
+      }
+    })()
+  </script>
   {{@scripts}}
 </body>
 </html>

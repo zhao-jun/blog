@@ -6,7 +6,10 @@ const {include} = require('./config')
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin') // vue-loader v15新增
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
+
 const basicConfig = require('./webpack.config.base')
+const commonConfig = require('../config')
 
 const isDev = process.env.NODE_ENV === 'development'
 // css module开发和生产命名区分
@@ -132,7 +135,8 @@ if (isDev) {
       // new ExtractTextWebpackPlugin('styles.[hash:8].css')
       new MiniCssExtractPlugin({
         filename: 'styles.[chunkhash:8].css'
-      })
+      }),
+      new SWPrecacheWebpackPlugin(commonConfig.swPrecache.build)
     ])
   })
 }
