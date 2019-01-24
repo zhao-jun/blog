@@ -1,4 +1,5 @@
 const moment = require('moment');
+const marked = require('../../utils/md');
 
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define(
@@ -40,7 +41,11 @@ module.exports = function(sequelize, DataTypes) {
       // 博客内容
       content: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: false,
+        get() {
+          if (!this.getDataValue('content')) return;
+          return marked(this.getDataValue('content'));
+        }
       },
       // 浏览次数
       browser: {

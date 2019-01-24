@@ -8,11 +8,9 @@
 
 <script>
 // 0.5.2 版本存在解析问题，目前暂用 0.3.19
-import marked from 'marked';
-import hljs from 'highlight.js';
+// import marked from 'marked';
+// import hljs from 'highlight.js';
 import 'highlight.js/styles/monokai-sublime.css';
-// import 'highlight.js/styles/vs.css';
-// import 'highlight.js/styles/atelier-forest-light.css';
 // 服务端直接渲染无法解析
 // import 'github-markdown-css';
 import { createNamespacedHelpers } from 'vuex';
@@ -20,27 +18,27 @@ const { mapState, mapMutations, mapActions } = createNamespacedHelpers(
   'blog/detail'
 );
 
-marked.setOptions({
-  renderer: new marked.Renderer(),
-  gfm: true,
-  tables: true,
-  breaks: true,
-  pedantic: true,
-  sanitize: true,
-  smartLists: true,
-  smartypants: true,
-  langPrefix: 'hljs ',
-  // highlight: function(code) {
-  //   return hljs.highlightAuto(code).value;
-  // }
-  highlight: function(code) {
-    return `<ul>${hljs
-      .highlightAuto(code)
-      .value.split('\n')
-      .map(i => `<li>${i}</li>`)
-      .join('')}</ul>`;
-  }
-});
+// marked.setOptions({
+//   renderer: new marked.Renderer(),
+//   gfm: true,
+//   tables: true,
+//   breaks: true,
+//   pedantic: true,
+//   sanitize: true,
+//   smartLists: true,
+//   smartypants: true,
+//   langPrefix: 'hljs ',
+//   // highlight: function(code) {
+//   //   return hljs.highlightAuto(code).value;
+//   // }
+//   highlight: function(code) {
+//     return `<ul>${hljs
+//       .highlightAuto(code)
+//       .value.split('\n')
+//       .map(i => `<li>${i}</li>`)
+//       .join('')}</ul>`;
+//   }
+// });
 
 export default {
   // 数据预取
@@ -52,8 +50,7 @@ export default {
   computed: {
     ...mapState(['title', 'content', 'loading']),
     compiledMarkdown() {
-      if (!this.content) return '';
-      return marked(this.content);
+      return this.content;
     }
   },
   methods: {
