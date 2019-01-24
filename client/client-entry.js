@@ -1,5 +1,5 @@
+import './config/polyfill';
 import createApp from './create-app';
-import Vue from 'vue';
 import { Loading } from 'element-ui';
 
 const { app, router, store } = createApp();
