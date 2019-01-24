@@ -71,6 +71,7 @@ Vue.mixin({
     } else {
       if (process.env.VUE_ENV === 'server') {
       } else {
+        // TODO
         document.title = to.meta.title;
       }
     }

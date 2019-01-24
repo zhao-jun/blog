@@ -94,7 +94,7 @@ export default {
   }
   // 底部分页
   .el-pagination {
-    margin-top: 30px;
+    margin: 30px 0;
     text-align: center;
   }
 }

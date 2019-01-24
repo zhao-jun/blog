@@ -13,7 +13,7 @@ const routes = {
     component: () => import('../views/blog/list'),
     name: 'home',
     meta: {
-      title: 'home',
+      title: '个人日志',
       category: '0'
     }
   },
@@ -22,7 +22,7 @@ const routes = {
     component: () => import('../views/blog/list'),
     name: 'fe',
     meta: {
-      title: 'FE',
+      title: '前端',
       category: '1'
     }
   },
@@ -40,7 +40,7 @@ const routes = {
     component: () => import('../views/blog/list'),
     name: 'other',
     meta: {
-      title: 'other',
+      title: '其他',
       category: '9'
     }
   },

@@ -47,6 +47,10 @@ export default {
       id: route.params.id
     });
   },
+  mounted() {
+    // TODO：修改title方式
+    if (window) document.title = this.title;
+  },
   computed: {
     ...mapState(['title', 'content', 'loading']),
     compiledMarkdown() {

@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="阿夸漫谈,前端,HTML,CSS,JavaScript,Vue,React,Node" />
+  <meta name="description" content="个人前端网站,发表平时所学和总结" />
+  <meta name="author" content="阿夸AQUA">
   <title>{{@title}}</title>
   {{@renderResourceHints}}
   {{@style}}

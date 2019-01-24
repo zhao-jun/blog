@@ -48,8 +48,8 @@ module.exports = class BlogService {
           'content',
           'browser',
           'author',
-          'banner',
-          'createdAt'
+          'banner'
+          // 'updatedAt'
         ]
       }
     };

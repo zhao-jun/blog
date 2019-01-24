@@ -42,20 +42,16 @@ module.exports = {
      * @type {Array}
      */
     staticFileGlobsIgnorePatterns: [
-      // map 文件, json 文件不缓存
+      // map 文件, json 文件，请求不缓存
       /\.map$/,
       /vue-ssr-client-manifest\.json/,
-      /\/backend/,
-      /\.jpg/i,
-      /\.png/i
+      /\/backend/
     ],
     ignoreUrlParametersMatching: [
-      // map 文件, json 文件不缓存
+      // map 文件, json 文件，请求不缓存
       /\.map$/,
       /vue-ssr-client-manifest\.json/,
-      /\/backend/,
-      /\.jpg/i,
-      /\.png/i
+      /\/backend/
     ],
 
     /**
