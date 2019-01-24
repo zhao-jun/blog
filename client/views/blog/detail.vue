@@ -65,7 +65,7 @@ export default {
 .markdown-body {
   box-sizing: border-box;
   min-width: 200px;
-  max-width: 980px;
+  max-width: 750px;
   margin: 0 auto;
   padding: 20px 45px 45px;
 }

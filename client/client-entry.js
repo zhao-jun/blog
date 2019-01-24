@@ -1,4 +1,6 @@
 import createApp from './create-app';
+import Vue from 'vue';
+import { Loading } from 'element-ui';
 
 const { app, router, store } = createApp();
 
@@ -6,7 +8,7 @@ const { app, router, store } = createApp();
 if (window.__INITIAL_STATE__) {
   store.replaceState(window.__INITIAL_STATE__);
 }
-// 开发环境客户端第一次asyncData执行
+// 开发环境客户端第一次 asyncData 执行
 if (process.env.NODE_ENV === 'development' && window.location.port === '8000') {
   router.beforeResolve((to, from, next) => {
     const matched = router.getMatchedComponents(to);
@@ -53,6 +55,11 @@ router.onReady(() => {
     if (!activated.length) {
       return next();
     }
+    const loading = Loading.service({
+      background: 'rgba(0, 0, 0, 0.8)',
+      spinner: 'el-icon-loading',
+      text: '拼命加载中'
+    });
     // 这里如果有加载指示器(loading indicator)，就触发
     Promise.all(
       activated.map(c => {
@@ -63,6 +70,7 @@ router.onReady(() => {
     )
       .then(() => {
         // 停止加载指示器(loading indicator)
+        loading.close();
         next();
       })
       .catch(next);

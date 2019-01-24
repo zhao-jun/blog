@@ -45,13 +45,17 @@ module.exports = {
       // map 文件, json 文件不缓存
       /\.map$/,
       /vue-ssr-client-manifest\.json/,
-      /\/backend/
+      /\/backend/,
+      /\.jpg/i,
+      /\.png/i
     ],
     ignoreUrlParametersMatching: [
       // map 文件, json 文件不缓存
       /\.map$/,
       /vue-ssr-client-manifest\.json/,
-      /\/backend/
+      /\/backend/,
+      /\.jpg/i,
+      /\.png/i
     ],
 
     /**

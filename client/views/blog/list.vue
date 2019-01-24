@@ -70,7 +70,7 @@ export default {
   justify-content: flex-end;
   margin-right: 50px;
   .blog-list-content {
-    width: 800px;
+    width: 750px;
   }
   .blog-header {
     display: flex;
