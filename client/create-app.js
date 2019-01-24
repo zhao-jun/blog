@@ -2,6 +2,8 @@ import Vue from 'vue';
 import App from './app.vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
+// import 'babel-polyfill';
+import './config/polyfill';
 import './assets/styles/index.less';
 import './components/common';
 import createRouter from './config/router';
