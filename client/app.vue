@@ -24,7 +24,10 @@ export default {
   flex-direction: column;
   min-height: 100vh;
   .center {
-    flex: 1;
+    // https://segmentfault.com/q/1010000016433717
+    // flex: 1;
+    min-height: calc(100vh - 160px);
+    box-sizing: border-box;
     display: flex;
     padding-top: 30px;
     justify-content: center;
