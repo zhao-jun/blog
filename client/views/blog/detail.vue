@@ -47,10 +47,6 @@ export default {
       id: route.params.id
     });
   },
-  mounted() {
-    // TODO：修改title方式
-    if (window) document.title = this.title;
-  },
   computed: {
     ...mapState(['title', 'content', 'loading']),
     compiledMarkdown() {
@@ -59,6 +55,12 @@ export default {
   },
   methods: {
     ...mapActions(['getBlogDetail'])
+  },
+  metaInfo() {
+    const title = this.title ? this.title + ' - 阿夸漫谈' : '阿夸漫谈';
+    return {
+      title
+    };
   }
 };
 </script>

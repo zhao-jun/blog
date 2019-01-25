@@ -4,9 +4,11 @@ import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import './assets/styles/index.less';
 import './components/common';
+import './mixins';
 import createRouter from './config/router';
 import createStore from './store/store';
 import { Menu, MenuItem, Submenu, Card, Pagination } from 'element-ui';
+
 Vue.component(Menu.name, Menu);
 Vue.component(MenuItem.name, MenuItem);
 Vue.component(Submenu.name, Submenu);
@@ -26,6 +28,7 @@ Vue.component(Pagination.name, Pagination);
 // 导出一个工厂函数，用于创建新的应用程序、router 和 store 实例
 Vue.use(VueRouter);
 Vue.use(Vuex);
+
 // 客户端数据预取
 // 存在问题：每次服务端渲染好后进入还会重新再请求一遍
 // 存在问题：路由组件重用还需要全局Vue.mixin
@@ -48,7 +51,7 @@ Vue.use(Vuex);
 // function a () {
 //   document.title = '123'
 // }
-// 解决路由组件重用asyncData执行问题
+// 解决路由组件重用 asyncData 执行问题
 Vue.mixin({
   beforeRouteUpdate(to, from, next) {
     const { asyncData } = this.$options;
@@ -63,7 +66,6 @@ Vue.mixin({
       next();
     }
   },
-  // todo title修改
   beforeRouteEnter(to, from, next) {
     /* 路由发生变化修改页面title */
     // TODO: next 发生了什么？

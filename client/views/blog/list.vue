@@ -47,7 +47,6 @@ export default {
     ...blogVuex.mapState(['list', 'total', 'loading', 'pagination']),
     ...categoryVuex.mapState(['category'])
   },
-  mounted() {},
   methods: {
     ...blogVuex.mapActions(['getBlogList']),
     ...blogVuex.mapMutations([]),
