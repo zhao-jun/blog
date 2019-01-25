@@ -2,7 +2,7 @@
   <div class="home">
     <com-header />
     <div class="center">
-      <router-view class="content" />
+      <keep-alive> <router-view class="content" /> </keep-alive>
       <!-- <div class="sidebar"><com-wxqr /></div> -->
     </div>
     <com-footer />

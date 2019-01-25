@@ -1,7 +1,7 @@
 <template>
   <div class="blog-list-container">
-    <com-loading v-if="loading" />
-    <div class="blog-list-content" v-else>
+    <!-- <com-loading v-if="loading" /> -->
+    <div class="blog-list-content">
       <el-card
         shadow="hover"
         v-for="item in list"

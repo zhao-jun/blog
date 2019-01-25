@@ -66,17 +66,32 @@ Vue.mixin({
       next();
     }
   },
+  // 页面渲染后, 跳转到记录的滚动条位置
   beforeRouteEnter(to, from, next) {
-    /* 路由发生变化修改页面title */
-    // TODO: next 发生了什么？
-    if (!to.meta.title) {
-    } else {
-      if (process.env.VUE_ENV === 'server') {
-      } else {
-        // TODO
-        document.title = to.meta.title;
-      }
-    }
+    next(vm => {
+      // 通过 `vm` 访问组件实例
+      vm.$nextTick().then(() => {
+        if (!vm.$store.state.appRoot.historyScrollTop[to.fullPath]) return;
+        const scrollTop =
+          vm.$store.state.appRoot.historyScrollTop[to.fullPath] || 0;
+        window.scrollTo(0, scrollTop);
+      });
+    });
+  },
+  // beforeRouteEnter(to, from, next) {
+  //   // TODO: next 发生了什么？
+  //   next(vm => console.log(vm));
+  // },
+  // 路由切换时，保存页面滚动位置
+  beforeRouteLeave(to, from, next) {
+    this.$store.dispatch('appRoot/saveScrollTop', {
+      path: from.fullPath,
+      scrollTop: Math.max(
+        window.pageYOffset,
+        document.documentElement.scrollTop,
+        document.body.scrollTop
+      )
+    });
     next();
   }
 });

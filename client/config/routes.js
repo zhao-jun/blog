@@ -64,7 +64,8 @@ const routes = {
     component: () => import('../views/blog/detail'),
     name: 'blog',
     meta: {
-      title: 'blog'
+      title: 'blog',
+      notKeepAlive: true
     }
   },
   '404': {

@@ -55,16 +55,24 @@ router.onReady(() => {
     if (!activated.length) {
       return next();
     }
+    // 这里如果有加载指示器(loading indicator)，就触发
     const loading = Loading.service({
       background: 'rgba(0, 0, 0, 0.8)',
       spinner: 'el-icon-loading',
       text: '拼命加载中'
     });
-    // 这里如果有加载指示器(loading indicator)，就触发
     Promise.all(
       activated.map(c => {
-        if (c.asyncData) {
-          return c.asyncData({ store, route: to });
+        /**
+         * 两种情况下执行 asyncData:
+         * 1. 非 keep-alive 组件每次都需要执行
+         * 2. keep-alive 组件首次执行，执行后添加标志 asyncDataFetched
+         */
+        if (c.asyncData && (!c.asyncDataFetched || to.meta.notKeepAlive)) {
+          // return c.asyncData({ store, route: to });
+          return c.asyncData({ store, route: to }).then(() => {
+            c.asyncDataFetched = true;
+          });
         }
       })
     )
