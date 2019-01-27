@@ -65,6 +65,9 @@ export default {
 
 <style lang="less" scoped>
 header {
+  position: fixed;
+  left: 0;
+  right: 0;
   .el-menu {
     padding-right: 30px;
   }

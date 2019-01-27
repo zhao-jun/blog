@@ -20,16 +20,16 @@ export default {
 
 <style lang="less" scoped>
 .home {
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   min-height: 100vh;
   .center {
     // https://segmentfault.com/q/1010000016433717
     // flex: 1;
-    min-height: calc(100vh - 160px);
+    min-height: calc(100vh - 100px);
     box-sizing: border-box;
     display: flex;
-    padding-top: 30px;
+    padding-top: 90px;
     justify-content: center;
   }
   // .content {

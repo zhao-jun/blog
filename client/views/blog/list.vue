@@ -14,7 +14,9 @@
             <span class="blog-date">{{ item.updatedAt }}</span>
           </div>
         </div>
-        <div class="blog-summary">{{ item.introduce }}</div>
+        <router-link :to="`${routes.blogDetail.pushPath}/${item.id}`">
+          <div class="blog-summary">{{ item.introduce }}</div>
+        </router-link>
       </el-card>
       <el-pagination
         @size-change="handleSizeChange"
@@ -42,6 +44,11 @@ export default {
     await store.dispatch('blog/list/getBlogList', {
       category: route.meta.category
     });
+  },
+  data() {
+    return {
+      routes
+    };
   },
   computed: {
     ...blogVuex.mapState(['list', 'total', 'loading', 'pagination']),
