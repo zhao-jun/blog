@@ -10,7 +10,8 @@ export default {
       page: 1,
       rows: 10,
       category: '',
-      title: ''
+      title: '',
+      keyword: ''
     }
   },
   mutations: {

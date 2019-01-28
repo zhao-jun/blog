@@ -12,6 +12,15 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: true,
         autoIncrement: true
       },
+      // code
+      code: {
+        type: DataTypes.UUID,
+        defaultValue: function() {
+          return ((Date.now() / 1000) | 0).toString(32);
+        },
+        // defaultValue: DataTypes.UUIDV4,
+        allowNull: true
+      },
       // 博客标题
       title: {
         type: DataTypes.STRING,

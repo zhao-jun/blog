@@ -5,16 +5,16 @@
       <el-card
         shadow="hover"
         v-for="item in list"
-        :key="item.id"
+        :key="item.code"
         @click.native="detail(item)"
       >
         <div slot="header" class="clearfix">
           <div class="blog-header">
             <span class="blog-title">{{ item.title }}</span>
-            <span class="blog-date">{{ item.updatedAt }}</span>
+            <span class="blog-date">{{ item.createdAt }}</span>
           </div>
         </div>
-        <router-link :to="`${routes.blogDetail.pushPath}/${item.id}`">
+        <router-link :to="`${routes.blogDetail.pushPath}/${item.code}`">
           <div class="blog-summary">{{ item.introduce }}</div>
         </router-link>
       </el-card>
@@ -58,7 +58,7 @@ export default {
     ...blogVuex.mapActions(['getBlogList']),
     ...blogVuex.mapMutations([]),
     detail(item) {
-      this.$router.push(`${routes.blogDetail.pushPath}/${item.id}`);
+      this.$router.push(`${routes.blogDetail.pushPath}/${item.code}`);
     },
     handleSizeChange(value) {
       this.getBlogList({ rows: value });

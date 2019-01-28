@@ -44,7 +44,7 @@ export default {
   // 数据预取
   asyncData({ store, route }) {
     return store.dispatch('blog/detail/getBlogDetail', {
-      id: route.params.id
+      code: route.params.code
     });
   },
   computed: {

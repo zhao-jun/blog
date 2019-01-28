@@ -13,7 +13,7 @@ const routes = {
     component: () => import('../views/blog/list'),
     name: 'home',
     meta: {
-      title: '个人日志',
+      title: '阿夸漫谈',
       category: '0'
     }
   },
@@ -59,7 +59,7 @@ const routes = {
     ]
   },
   blogDetail: {
-    path: '/blog/detail/:id',
+    path: '/blog/detail/:code',
     pushPath: '/blog/detail',
     component: () => import('../views/blog/detail'),
     name: 'blog',

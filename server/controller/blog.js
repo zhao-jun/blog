@@ -9,8 +9,8 @@ exports.getBlogList = async ctx => {
 
 exports.getBlogDetail = async ctx => {
   let param = ctx.query;
-  if (param.id) {
-    let data = await BlogService.getBlogDetail(param.id);
+  if (param.code) {
+    let data = await BlogService.getBlogDetail(param.code);
     ctx.body = response.SUCCESS(data);
   }
 };
