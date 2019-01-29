@@ -1,0 +1,81 @@
+<template>
+  <el-card class="search-container" shadow="hover">
+    <div slot="header">搜索</div>
+    <div class="search">
+      <i class="el-icon-search"></i>
+      <input
+        class="search-input"
+        type="text"
+        placeholder="搜索标题或摘要"
+        @keyup.enter="search"
+      />
+    </div>
+    <p>微信公众号：<span class="wechat">阿夸漫谈</span></p>
+  </el-card>
+</template>
+
+<script>
+export default {
+  methods: {
+    search(e) {
+      this.$store.dispatch('blog/list/getBlogList', {
+        keyword: e.target.value
+      });
+    }
+  }
+};
+</script>
+
+<style lang="less">
+.search-container {
+  width: 280px;
+  height: 140px;
+  font-size: 14px;
+  cursor: default;
+  // padding: 20px 0;
+  .el-card__header {
+    padding: 8px 0;
+    text-indent: 1em;
+  }
+  .search {
+    position: relative;
+    height: 40px;
+  }
+  .el-icon-search {
+    position: absolute;
+    font-size: 14px;
+    left: 10px;
+    top: 12px;
+    color: #c0c4cc;
+    z-index: 100;
+  }
+  .search-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    font-size: 13px;
+    background-color: #fff;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid #dcdfe6;
+    box-sizing: border-box;
+    color: #606266;
+    line-height: 40px;
+    outline: 0;
+    padding: 0 15px 0 30px;
+    transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    width: 100%;
+    &::placeholder {
+      color: #c0c4cc;
+    }
+    &:focus {
+      border-color: #409eff;
+      outline: 0;
+    }
+  }
+  .wechat {
+    color: #ffd04b;
+  }
+}
+</style>

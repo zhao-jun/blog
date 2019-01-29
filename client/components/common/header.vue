@@ -68,6 +68,7 @@ header {
   position: fixed;
   left: 0;
   right: 0;
+  z-index: 999;
   .el-menu {
     padding-right: 30px;
   }

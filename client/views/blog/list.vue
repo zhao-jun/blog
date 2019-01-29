@@ -29,6 +29,7 @@
       >
       </el-pagination>
     </div>
+    <com-search />
   </div>
 </template>
 
@@ -74,9 +75,9 @@ export default {
 .blog-list-container {
   display: flex;
   justify-content: flex-end;
-  margin-right: 50px;
   .blog-list-content {
     width: 750px;
+    margin-right: 30px;
   }
   .blog-header {
     display: flex;
