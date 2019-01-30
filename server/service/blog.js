@@ -70,7 +70,12 @@ module.exports = class BlogService {
               [Op.like]: `%${keyword}%`
             }
           }
-        ]
+        ],
+        [Op.and]: {
+          category: {
+            [Op.like]: `%${category == 0 ? '' : category}%`
+          }
+        }
       };
     } else if (+category) {
       // SELECT * FROM blogs WHERE FIND_IN_SET('1',category)

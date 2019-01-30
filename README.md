@@ -12,3 +12,5 @@
 ### 后端技术
 * koa 2.x
 * Node.js 8.x
+* sequelize
+* mysql

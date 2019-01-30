@@ -77,7 +77,7 @@ export default {
   justify-content: flex-end;
   .blog-list-content {
     width: 750px;
-    margin-right: 30px;
+    margin-right: 310px;
   }
   .blog-header {
     display: flex;
@@ -87,10 +87,10 @@ export default {
     font-weight: bold;
   }
   .blog-date {
-    color: #ccc;
+    color: #999;
   }
   .blog-summary {
-    color: #ccc;
+    color: #999;
     font-size: 14px;
     line-height: 1.5;
     height: 40px;

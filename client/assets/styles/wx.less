@@ -30,7 +30,9 @@
     }
     ul li {
       font-size: 14px;
-      line-height: 1.4;
+      // line-height: 1.4;
+      height: 20px;
+      line-height: 20px;
       list-style: none;
     }
   }
@@ -43,6 +45,7 @@
     border: none;
     border-top: 1px dashed #A5A5A5;
   }
+  // 引用块
   blockquote {
     padding: 15px 1rem;
     font-size: 16px;
@@ -54,6 +57,56 @@
     background: #f2f7fb;
     margin: 1em 0;
   }
+  // 行内代码
+  p code {
+      word-wrap: break-word;
+      font-size: 14px;
+      padding: 2px 4px;
+      border-radius: 4px;
+      margin:0 2px;
+      color:#e96900;
+      background:#ccc;
+  }
+  /*================表格开始================*/
+  table
+  {
+    display:table;
+    width: 100% ;
+    text-align: left;
+    font-size: 14px;
+    border-collapse:collapse;
+  }
+  tbody {
+    border: 0;
+  }
+
+  table tr {
+    border: 0;
+    border-top: 1px solid #CCC;
+    // word-break: break-all;
+    background-color: white;
+
+  }
+
+  /*隔行改变行的背景色，如需要请打开*/
+  /*
+  table tr:nth-child(2n) {
+    background-color: #F8F8F8;
+  }
+  */
+
+  table tr th, table tr td {
+    font-size: 1em;
+    border: 1px solid #CCC;
+    padding: 0.5em .5em;
+    text-align: left;
+  }
+  /*表头的属性*/
+  table tr th {
+  font-weight: bold;
+    background-color: #F0F0F0;
+  }
+  /*================表格结束================*/
   // 图片居中
   p img {
     display: block;

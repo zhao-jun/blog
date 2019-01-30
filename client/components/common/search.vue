@@ -1,11 +1,12 @@
 <template>
-  <el-card class="search-container" shadow="hover">
+  <el-card class="search-container search-container-fixed" shadow="hover">
     <div slot="header">搜索</div>
     <div class="search">
-      <i class="el-icon-search"></i>
+      <i class="el-icon-search search-icon" @click="search"></i>
       <input
         class="search-input"
         type="text"
+        ref="input"
         placeholder="搜索标题或摘要"
         @keyup.enter="search"
       />
@@ -18,8 +19,9 @@
 export default {
   methods: {
     search(e) {
+      let keyword = this.$refs.input.value;
       this.$store.dispatch('blog/list/getBlogList', {
-        keyword: e.target.value
+        keyword
       });
     }
   }
@@ -31,6 +33,10 @@ export default {
   width: 280px;
   height: 140px;
   font-size: 14px;
+  &.search-container-fixed {
+    position: fixed;
+    top: 90px;
+  }
   cursor: default;
   // padding: 20px 0;
   .el-card__header {
@@ -40,6 +46,9 @@ export default {
   .search {
     position: relative;
     height: 40px;
+  }
+  .search-icon {
+    cursor: pointer;
   }
   .el-icon-search {
     position: absolute;
@@ -75,7 +84,7 @@ export default {
     }
   }
   .wechat {
-    color: #ffd04b;
+    color: rgba(245, 137, 7);
   }
 }
 </style>
