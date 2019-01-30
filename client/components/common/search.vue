@@ -36,6 +36,7 @@ export default {
   &.search-container-fixed {
     position: fixed;
     top: 90px;
+    margin-left: 780px;
   }
   cursor: default;
   // padding: 20px 0;
@@ -70,6 +71,7 @@ export default {
     border: 1px solid #dcdfe6;
     box-sizing: border-box;
     color: #606266;
+    height: 40px;
     line-height: 40px;
     outline: 0;
     padding: 0 15px 0 30px;

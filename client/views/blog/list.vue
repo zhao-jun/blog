@@ -73,8 +73,8 @@ export default {
 
 <style lang="less" scoped>
 .blog-list-container {
-  display: flex;
-  justify-content: flex-end;
+  // display: flex;
+  // justify-content: flex-end;
   .blog-list-content {
     width: 750px;
     margin-right: 310px;
