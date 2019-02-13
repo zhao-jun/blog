@@ -11,7 +11,7 @@
         <div slot="header" class="clearfix">
           <div class="blog-header">
             <span class="blog-title">{{ item.title }}</span>
-            <span class="blog-date">{{ item.createdAt }}</span>
+            <span class="blog-date">发表于 {{ item.createdAt }}</span>
           </div>
         </div>
         <router-link :to="`${routes.blogDetail.pushPath}/${item.code}`">
@@ -87,17 +87,17 @@ export default {
     font-weight: bold;
   }
   .blog-date {
+    font-size: 14px;
     color: #999;
   }
   .blog-summary {
     color: #999;
     font-size: 14px;
-    line-height: 1.5;
-    height: 40px;
+    line-height: 2;
   }
   // 卡片
   .el-card + .el-card {
-    margin-top: 10px;
+    margin-top: 24px;
   }
   // 底部分页
   .el-pagination {

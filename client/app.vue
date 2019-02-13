@@ -2,7 +2,10 @@
   <div class="home">
     <com-header />
     <div class="center">
-      <keep-alive> <router-view class="content" /> </keep-alive>
+      <keep-alive>
+        <router-view v-if="!$route.meta.notKeepAlive" class="content" />
+      </keep-alive>
+      <router-view v-if="$route.meta.notKeepAlive" class="content" />
     </div>
     <com-footer />
   </div>

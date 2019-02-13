@@ -55,6 +55,8 @@ export default {
   methods: {
     ...mapActions(['getBlogList']),
     handleSelect(key, keyPath) {
+      // 移至 beforeRouteEnter
+      // document.title = this.$route.meta.title;
       if (this.$route.meta.category)
         return this.getBlogList({ category: this.$route.meta.category });
       this.getBlogList();

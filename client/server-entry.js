@@ -25,8 +25,11 @@ export default context =>
       ).then(_ => {
         // 将已经渲染好的状态 store 放入上下文
         context.state = store.state;
-        // todo 存在问题：如果不存在 title 的时候要设置默认 title
-        context.title = router.currentRoute.meta.title || 'Document';
+        // 默认设置 title 为 router.currentRoute.meta.title
+        // 动态 title 在 mixins 中处理
+        // 也可以将所有 title 都防止 mixins 中处理
+        if (router.currentRoute.meta.title)
+          context.title = router.currentRoute.meta.title;
         resolve(app);
       });
     });

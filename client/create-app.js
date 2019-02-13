@@ -49,9 +49,7 @@ Vue.use(Vuex);
 //     }
 //   })
 // }
-// function a () {
-//   document.title = '123'
-// }
+
 // 解决路由组件重用 asyncData 执行问题
 Vue.mixin({
   beforeRouteUpdate(to, from, next) {
@@ -69,20 +67,20 @@ Vue.mixin({
   },
   // 页面渲染后, 跳转到记录的滚动条位置
   beforeRouteEnter(to, from, next) {
-    next(vm => {
-      // 通过 `vm` 访问组件实例
-      vm.$nextTick().then(() => {
-        if (!vm.$store.state.appRoot.historyScrollTop[to.fullPath]) return;
-        const scrollTop =
-          vm.$store.state.appRoot.historyScrollTop[to.fullPath] || 0;
-        window.scrollTo(0, scrollTop);
+    if (process.env.VUE_ENV !== 'server') {
+      if (to.meta.title) document.title = to.meta.title;
+      next(vm => {
+        // 通过 `vm` 访问组件实例
+        vm.$nextTick().then(() => {
+          const scrollTop =
+            vm.$store.state.appRoot.historyScrollTop[to.fullPath] || 0;
+          window.scrollTo(0, scrollTop);
+        });
       });
-    });
+    } else {
+      next();
+    }
   },
-  // beforeRouteEnter(to, from, next) {
-  //   // TODO: next 发生了什么？
-  //   next(vm => console.log(vm));
-  // },
   // 路由切换时，保存页面滚动位置
   beforeRouteLeave(to, from, next) {
     this.$store.dispatch('appRoot/saveScrollTop', {

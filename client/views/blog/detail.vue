@@ -1,8 +1,8 @@
 <template>
   <div>
-    <!-- <com-loading v-if="loading" /> -->
     <h1>{{ title }}</h1>
     <article class="markdown-body" v-html="compiledMarkdown"></article>
+    <com-back-top />
   </div>
 </template>
 

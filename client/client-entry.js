@@ -76,7 +76,7 @@ router.onReady(() => {
         }
       })
     )
-      .then(() => {
+      .then(_ => {
         // 停止加载指示器(loading indicator)
         loading.close();
         next();

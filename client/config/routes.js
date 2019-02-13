@@ -22,7 +22,7 @@ const routes = {
     component: () => import('../views/blog/list'),
     name: 'fe',
     meta: {
-      title: '前端',
+      title: '前端 - 阿夸漫谈',
       category: '1'
     }
   },
@@ -31,7 +31,7 @@ const routes = {
     component: () => import('../views/blog/list'),
     name: 'nodejs',
     meta: {
-      title: 'Node.js',
+      title: 'Node.js - 阿夸漫谈',
       category: '2'
     }
   },
@@ -40,7 +40,7 @@ const routes = {
     component: () => import('../views/blog/list'),
     name: 'other',
     meta: {
-      title: '其他',
+      title: '其他 - 阿夸漫谈',
       category: '9'
     }
   },
@@ -64,7 +64,7 @@ const routes = {
     component: () => import('../views/blog/detail'),
     name: 'blog',
     meta: {
-      title: 'blog',
+      // title: 'blog',
       notKeepAlive: true
     }
   },
