@@ -4,14 +4,16 @@ export default {
   namespaced: true,
   state: {
     title: '',
-    content: '',
+    htmlContent: '',
     loading: true
   },
   mutations: {
     updateContent(state, res) {
       // TODO
       state.title = res && res.title;
-      state.content = res && res.content;
+      state.htmlContent = res && res.htmlContent;
+      state.catalog = res && res.catalog;
+      state.catalogLength = res && res.catalogLength;
       state.loading = false;
     }
   },

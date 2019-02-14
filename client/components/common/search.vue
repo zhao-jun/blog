@@ -30,17 +30,17 @@ export default {
 
 <style lang="less">
 .search-container {
-  width: 280px;
+  width: 250px;
   height: 140px;
   font-size: 14px;
+  cursor: default;
   &.search-container-fixed {
     position: fixed;
     top: 90px;
     margin-left: 780px;
   }
-  cursor: default;
-  // padding: 20px 0;
   .el-card__header {
+    font-weight: bold;
     padding: 8px 0;
     text-indent: 1em;
   }
@@ -86,7 +86,8 @@ export default {
     }
   }
   .wechat {
-    color: rgba(245, 137, 7);
+    // color: rgba(245, 137, 7);
+    color: #409eff;
   }
 }
 </style>

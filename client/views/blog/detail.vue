@@ -1,7 +1,20 @@
 <template>
-  <div>
-    <h1>{{ title }}</h1>
+  <div class="blog-detail-container">
+    <h1 class="markdown-title">{{ title }}</h1>
     <article class="markdown-body" v-html="compiledMarkdown"></article>
+    <el-card class="article-header article-header-fixed" shadow="hover">
+      <div slot="header">目录</div>
+      <div class="outer-scroll" :style="`height: ${catalogLength * 25}px`">
+        <div class="inner-scroll">
+          <ul
+            class="article-header-index"
+            v-if="catalog"
+            v-html="catalog"
+            :style="`height: ${catalogLength * 25}px`"
+          ></ul>
+        </div>
+      </div>
+    </el-card>
     <com-back-top />
   </div>
 </template>
@@ -48,9 +61,15 @@ export default {
     });
   },
   computed: {
-    ...mapState(['title', 'content', 'loading']),
+    ...mapState([
+      'title',
+      'htmlContent',
+      'catalog',
+      'catalogLength',
+      'loading'
+    ]),
     compiledMarkdown() {
-      return this.content;
+      return this.htmlContent;
     }
   },
   methods: {
@@ -68,12 +87,61 @@ export default {
 <style lang="less">
 // @import '../../../node_modules/github-markdown-css/github-markdown.css';
 @import '../../assets/styles/wx.less';
-.markdown-body {
-  box-sizing: border-box;
-  min-width: 200px;
-  max-width: 750px;
-  margin: 0 auto;
-  padding: 20px 45px 45px;
+.blog-detail-container {
+  .markdown-title {
+    margin-right: 280px;
+  }
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 750px;
+    margin-right: 280px;
+    padding: 20px 0 45px;
+  }
+  .article-header {
+    width: 250px;
+    font-size: 14px;
+
+    cursor: default;
+    .el-card__header {
+      // position: fixed;
+      // width: 100%;
+      font-weight: bold;
+      padding: 8px 0;
+      text-indent: 1em;
+    }
+    &.article-header-fixed {
+      position: fixed;
+      top: 90px;
+      margin-left: 780px;
+    }
+    .outer-scroll,
+    .article-header-index {
+      width: 210px;
+      height: 200px;
+      max-height: calc(~'100vh - 360px');
+    }
+    .outer-scroll {
+      position: relative;
+      overflow: hidden;
+    }
+    .inner-scroll {
+      position: absolute;
+      left: 0;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+    .article-header-index {
+      padding: 0;
+      list-style: none;
+      margin: 0;
+      line-height: 1.8;
+      /* for Chrome */
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
 }
 
 @media (max-width: 767px) {

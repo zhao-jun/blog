@@ -30,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
       // 博客作者
       author: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
       },
       // 博客介绍
       introduce: {
@@ -45,16 +45,31 @@ module.exports = function(sequelize, DataTypes) {
       // 博客封面
       banner: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
       },
       // 博客内容
       content: {
         type: DataTypes.TEXT,
-        allowNull: false,
-        get() {
-          if (!this.getDataValue('content')) return;
-          return marked(this.getDataValue('content'));
-        }
+        allowNull: false
+        // get() {
+        //   if (!this.getDataValue('content')) return;
+        //   return marked(this.getDataValue('content'));
+        // }
+      },
+      // 渲染之后的内容
+      htmlContent: {
+        type: DataTypes.TEXT,
+        allowNull: true
+      },
+      // 目录
+      catalog: {
+        type: DataTypes.TEXT,
+        allowNull: true
+      },
+      // 目录长度
+      catalogLength: {
+        type: DataTypes.INTEGER,
+        allowNull: true
       },
       // 浏览次数
       browser: {
@@ -69,10 +84,10 @@ module.exports = function(sequelize, DataTypes) {
         }
       },
       updatedAt: {
-        type: DataTypes.DATE,
-        get() {
-          return moment(this.getDataValue('updatedAt')).format('YYYY-MM-DD');
-        }
+        type: DataTypes.DATE
+        // get() {
+        //   return moment(this.getDataValue('updatedAt')).format('YYYY-MM-DD');
+        // }
       }
     },
     {

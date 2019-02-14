@@ -3,6 +3,7 @@ const Sequelize = require('sequelize');
 const BlogModel = sequelize.import('../model/blog/blog');
 const CategoryModel = sequelize.import('../model/blog/category');
 const { categoryList } = require('../config');
+const marked = require('../utils/md');
 
 const Op = Sequelize.Op;
 // 创建表
@@ -24,15 +25,43 @@ module.exports = class BlogService {
       content: data.content
     });
   }
+
   /**
-   * 创建标签
+   * 修改博客列表
    * @param data
    * @returns {Promise<*>}
    */
-  static async createTag(data) {
-    return await TagModel.create({
-      name: data.name
-    });
+  static async updateBlog(data) {
+    data.catalogLength = 0;
+    data.catalog = '';
+    data.htmlContent = marked(data.content).replace(
+      /(<)(h[0-9])( id=")([^<>]*)(">)([^<>\u21B5\r\n]*)(<\/h[0-9]>)/g,
+      function(match, $1, $2, $3, $4, $5, $6, $7) {
+        data.catalogLength += 1;
+        if ($2 === 'h2') {
+          data.catalog += `<li><a href="#articleHeader${
+            data.catalogLength
+          }">${$6}</a></li>`;
+        }
+        if ($2 === 'h3') {
+          data.catalog += `<ul><li><a href="#articleHeader${
+            data.catalogLength
+          }">${$6}</a></li></ul>`;
+        }
+        return (
+          $1 + $2 + $3 + `articleHeader${data.catalogLength}` + $5 + $6 + $7
+        );
+      }
+    );
+    data.catalog = data.catalog.split('</ul><ul>').join('');
+    return await BlogModel.update(
+      {
+        htmlContent: data.htmlContent,
+        catalog: data.catalog,
+        catalogLength: data.catalogLength
+      },
+      { where: { code: data.code } }
+    );
   }
 
   /**
@@ -111,12 +140,5 @@ module.exports = class BlogService {
         exclude: ['id', 'category', 'browser', 'author', 'banner', 'updatedAt']
       }
     });
-  }
-
-  /**
-   * 获取标签列表
-   */
-  static async getCategoryList() {
-    return await CategoryModel.findAll();
   }
 };
