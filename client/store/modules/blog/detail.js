@@ -14,6 +14,7 @@ export default {
       state.htmlContent = res && res.htmlContent;
       state.catalog = res && res.catalog;
       state.catalogLength = res && res.catalogLength;
+      state.createdAt = res && res.createdAt;
       state.loading = false;
     }
   },

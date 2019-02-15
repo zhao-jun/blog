@@ -1,6 +1,7 @@
 <template>
   <div class="blog-detail-container">
     <h1 class="markdown-title">{{ title }}</h1>
+    <p class="markdown-date">发表于 {{ createdAt }}</p>
     <article class="markdown-body" v-html="compiledMarkdown"></article>
     <el-card class="article-header article-header-fixed" shadow="hover">
       <div slot="header">目录</div>
@@ -31,28 +32,6 @@ const { mapState, mapMutations, mapActions } = createNamespacedHelpers(
   'blog/detail'
 );
 
-// marked.setOptions({
-//   renderer: new marked.Renderer(),
-//   gfm: true,
-//   tables: true,
-//   breaks: true,
-//   pedantic: true,
-//   sanitize: true,
-//   smartLists: true,
-//   smartypants: true,
-//   langPrefix: 'hljs ',
-//   // highlight: function(code) {
-//   //   return hljs.highlightAuto(code).value;
-//   // }
-//   highlight: function(code) {
-//     return `<ul>${hljs
-//       .highlightAuto(code)
-//       .value.split('\n')
-//       .map(i => `<li>${i}</li>`)
-//       .join('')}</ul>`;
-//   }
-// });
-
 export default {
   // 数据预取
   asyncData({ store, route }) {
@@ -66,6 +45,7 @@ export default {
       'htmlContent',
       'catalog',
       'catalogLength',
+      'createdAt',
       'loading'
     ]),
     compiledMarkdown() {
@@ -90,6 +70,12 @@ export default {
 .blog-detail-container {
   .markdown-title {
     margin-right: 280px;
+  }
+  .markdown-date {
+    text-align: center;
+    margin-right: 280px;
+    font-size: 14px;
+    color: #999;
   }
   .markdown-body {
     box-sizing: border-box;

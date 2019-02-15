@@ -34,25 +34,29 @@ module.exports = class BlogService {
   static async updateBlog(data) {
     data.catalogLength = 0;
     data.catalog = '';
-    data.htmlContent = marked(data.content).replace(
-      /(<)(h[0-9])( id=")([^<>]*)(">)([^<>\u21B5\r\n]*)(<\/h[0-9]>)/g,
-      function(match, $1, $2, $3, $4, $5, $6, $7) {
-        data.catalogLength += 1;
-        if ($2 === 'h2') {
-          data.catalog += `<li><a href="#articleHeader${
-            data.catalogLength
-          }">${$6}</a></li>`;
+    data.htmlContent = marked(data.content)
+      .replace(/(<a href="[^<>]*")(>)/g, function(match, $1, $2) {
+        return `${$1} target="_blank"${$2}`;
+      })
+      .replace(
+        /(<)(h[0-9])( id=")([^<>]*)(">)([^<>\u21B5\r\n]*)(<\/h[0-9]>)/g,
+        function(match, $1, $2, $3, $4, $5, $6, $7) {
+          data.catalogLength += 1;
+          if ($2 === 'h2') {
+            data.catalog += `<li><a href="#articleHeader${
+              data.catalogLength
+            }">${$6}</a></li>`;
+          }
+          if ($2 === 'h3') {
+            data.catalog += `<ul><li><a href="#articleHeader${
+              data.catalogLength
+            }">${$6}</a></li></ul>`;
+          }
+          return (
+            $1 + $2 + $3 + `articleHeader${data.catalogLength}` + $5 + $6 + $7
+          );
         }
-        if ($2 === 'h3') {
-          data.catalog += `<ul><li><a href="#articleHeader${
-            data.catalogLength
-          }">${$6}</a></li></ul>`;
-        }
-        return (
-          $1 + $2 + $3 + `articleHeader${data.catalogLength}` + $5 + $6 + $7
-        );
-      }
-    );
+      );
     data.catalog = data.catalog.split('</ul><ul>').join('');
     return await BlogModel.update(
       {

@@ -12,16 +12,21 @@ marked.setOptions({
   smartLists: true,
   smartypants: true,
   langPrefix: 'hljs ',
-  // highlight: function(code) {
-  //   return hljs.highlightAuto(code).value;
-  // }
   highlight: function(code) {
-    return `<ul>${hljs
-      .highlightAuto(code)
-      .value.split('\n')
-      .map(i => `<li>${i}</li>`)
-      .join('')}</ul>`;
+    return hljs.highlightAuto(code).value;
   }
+  // 解决换行问题
+  // highlight: function(code) {
+  //   // return `<ul>${hljs
+  //   //   .highlightAuto(code)
+  //   //   .value.split('\n')
+  //   //   .map(i => `<li>${i}</li>`)
+  //   //   .join('')}</ul>`;
+  //   return `${hljs
+  //     .highlightAuto(code)
+  //     .value.split('\n')
+  //     .join('<br />')}`;
+  // }
 });
 
 module.exports = marked;

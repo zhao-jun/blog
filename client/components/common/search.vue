@@ -46,7 +46,7 @@ export default {
   }
   .search {
     position: relative;
-    height: 40px;
+    height: 36px;
   }
   .search-icon {
     cursor: pointer;
@@ -55,7 +55,7 @@ export default {
     position: absolute;
     font-size: 14px;
     left: 10px;
-    top: 12px;
+    top: 11px;
     color: #c0c4cc;
     z-index: 100;
   }
@@ -71,8 +71,8 @@ export default {
     border: 1px solid #dcdfe6;
     box-sizing: border-box;
     color: #606266;
-    height: 40px;
-    line-height: 40px;
+    height: 36px;
+    line-height: 36px;
     outline: 0;
     padding: 0 15px 0 30px;
     transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
