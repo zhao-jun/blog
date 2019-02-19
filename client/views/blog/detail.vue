@@ -1,8 +1,11 @@
 <template>
   <div class="blog-detail-container">
-    <h1 class="markdown-title">{{ title }}</h1>
-    <p class="markdown-date">发表于 {{ createdAt }}</p>
-    <article class="markdown-body" v-html="compiledMarkdown"></article>
+    <div class="blog-detail-content">
+      <h1 class="markdown-title">{{ title }}</h1>
+      <p class="markdown-date">发表于 {{ createdAt }}</p>
+      <article class="markdown-body" v-html="compiledMarkdown"></article>
+    </div>
+
     <el-card class="article-header article-header-fixed" shadow="hover">
       <div slot="header">目录</div>
       <div class="outer-scroll" :style="`height: ${catalogLength * 25}px`">
@@ -68,12 +71,19 @@ export default {
 // @import '../../../node_modules/github-markdown-css/github-markdown.css';
 @import '../../assets/styles/wx.less';
 .blog-detail-container {
-  .markdown-title {
+  .blog-detail-content {
+    width: 750px;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: #fff;
     margin-right: 280px;
+    margin-bottom: 40px;
+  }
+  .markdown-title {
+    margin: 0;
   }
   .markdown-date {
     text-align: center;
-    margin-right: 280px;
     font-size: 14px;
     color: #999;
   }
@@ -81,8 +91,6 @@ export default {
     box-sizing: border-box;
     min-width: 200px;
     max-width: 750px;
-    margin-right: 280px;
-    padding: 20px 0 45px;
   }
   .article-header {
     width: 250px;

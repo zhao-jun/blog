@@ -44,6 +44,14 @@ const routes = {
       category: '9'
     }
   },
+  about: {
+    path: '/about',
+    component: () => import('../views/about'),
+    name: 'about',
+    meta: {
+      title: '关于 - 阿夸漫谈'
+    }
+  },
   utils: {
     path: '/utils',
     component: () => import('../views/utils'),

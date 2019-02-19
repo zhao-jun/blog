@@ -1,9 +1,11 @@
+@import "./default";
 /**
  * 全局修改样式
  */
 
 html {
   font-size: 16px;
+  background: #ebf0f0;
 }
 h1 {
   font-size: 24px;
@@ -21,4 +23,11 @@ h1 {
  */
 a {
   color: #409EFF;
+}
+/**
+ * 头部 submenu
+ * 是否和 el-menu 对齐
+ */
+.el-menu--horizontal > .el-submenu .el-submenu__title {
+  line-height: 62px;
 }

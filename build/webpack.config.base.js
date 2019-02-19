@@ -59,7 +59,7 @@ module.exports = {
             // 依赖file-loader
             loader: 'url-loader',
             options: {
-              limit: 1024,
+              limit: 10000,
               name: utils.assetsPath('img/[name].[hash:7].[ext]')
             }
           }

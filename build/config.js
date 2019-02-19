@@ -6,10 +6,11 @@ module.exports = {
   include: [resolve('test'), resolve('client')],
   dev: {
     assetsPublicPath: '/public/',
-    assetsSubDirectory: '/static/'
+    // 错误 /static/, `${assetsPublicPath}${assetsSubDirectory}`: /public//static/
+    assetsSubDirectory: 'static/'
   },
   prod: {
     assetsPublicPath: '/public/',
-    assetsSubDirectory: '/static/'
+    assetsSubDirectory: 'static/'
   }
 }
