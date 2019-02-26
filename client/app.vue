@@ -31,7 +31,7 @@ export default {
     min-height: calc(100vh - 100px);
     box-sizing: border-box;
     display: flex;
-    padding-top: 90px;
+    padding-top: 60px;
     justify-content: center;
   }
   // .content {

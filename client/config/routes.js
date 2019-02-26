@@ -35,6 +35,14 @@ const routes = {
       category: '2'
     }
   },
+  css: {
+    path: '/css',
+    component: () => import('../views/css'),
+    name: 'css',
+    meta: {
+      title: 'css - 阿夸漫谈'
+    }
+  },
   other: {
     path: '/other',
     component: () => import('../views/blog/list'),

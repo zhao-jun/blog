@@ -8,13 +8,27 @@ import './components/common';
 import './mixins';
 import createRouter from './config/router';
 import createStore from './store/store';
-import { Menu, MenuItem, Submenu, Card, Pagination } from 'element-ui';
+import {
+  Menu,
+  MenuItem,
+  Submenu,
+  MenuItemGroup,
+  Card,
+  Pagination,
+  Container,
+  Aside,
+  Main
+} from 'element-ui';
 
 Vue.component(Menu.name, Menu);
 Vue.component(MenuItem.name, MenuItem);
 Vue.component(Submenu.name, Submenu);
+Vue.component(MenuItemGroup.name, MenuItemGroup);
 Vue.component(Card.name, Card);
 Vue.component(Pagination.name, Pagination);
+Vue.component(Container.name, Container);
+Vue.component(Aside.name, Aside);
+Vue.component(Main.name, Main);
 // element-ui文档补充，部分组件正确引入方式
 // Vue.prototype.$msgbox = MessageBox;
 // Vue.prototype.$alert = MessageBox.alert;

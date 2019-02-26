@@ -19,7 +19,7 @@
           >首页</router-link
         ></el-menu-item
       >
-      <el-submenu index="2" show-timeout="0" popper-class="header-el-submenu">
+      <el-submenu index="2" :show-timeout="0" popper-class="header-el-submenu">
         <template slot="title"
           >分类</template
         >
@@ -39,19 +39,10 @@
           ></el-menu-item
         >
       </el-submenu>
-      <!-- <el-menu-item :index="routes.fe.path"
-        ><router-link :to="routes.fe.path" class="header-link"
-          >前端</router-link
-        ></el-menu-item
-      > -->
-      <!-- <el-menu-item :index="routes.nodejs.path"
-        ><router-link :to="routes.nodejs.path" class="header-link"
-          >Node.js</router-link
-        ></el-menu-item
-      > -->
-      <!-- <el-menu-item :index="routes.other.path"
-        ><router-link :to="routes.other.path" class="header-link"
-          >其他</router-link
+      <!-- CSS 部分暂时隐藏，写的时候再打开 -->
+      <!-- <el-menu-item :index="routes.css.path"
+        ><router-link :to="routes.css.path" class="header-link"
+          >CSS</router-link
         ></el-menu-item
       > -->
       <!-- <el-menu-item :index="routes.utils.path"

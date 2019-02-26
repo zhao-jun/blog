@@ -74,6 +74,7 @@ export default {
 
 <style lang="less" scoped>
 .blog-list-container {
+  padding-top: 30px;
   .blog-list-content {
     width: 750px;
     margin-right: 280px;
