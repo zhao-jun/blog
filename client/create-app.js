@@ -9,6 +9,7 @@ import './mixins';
 import createRouter from './config/router';
 import createStore from './store/store';
 import {
+  Tag,
   Menu,
   MenuItem,
   Submenu,
@@ -20,6 +21,7 @@ import {
   Main
 } from 'element-ui';
 
+Vue.component(Tag.name, Tag);
 Vue.component(Menu.name, Menu);
 Vue.component(MenuItem.name, MenuItem);
 Vue.component(Submenu.name, Submenu);

@@ -91,6 +91,11 @@ export default {
     box-sizing: border-box;
     min-width: 200px;
     max-width: 750px;
+    h2,
+    h3 {
+      margin-top: -60px;
+      padding-top: 60px;
+    }
   }
   .article-header {
     width: 250px;
