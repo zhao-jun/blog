@@ -34,11 +34,5 @@ export default {
     padding-top: 60px;
     justify-content: center;
   }
-  // .content {
-  //   width: 72%;
-  // }
-  // .sidebar {
-  //   width: 28%;
-  // }
 }
 </style>

@@ -18,7 +18,8 @@ import {
   Pagination,
   Container,
   Aside,
-  Main
+  Main,
+  Popover
 } from 'element-ui';
 
 Vue.component(Tag.name, Tag);
@@ -31,6 +32,7 @@ Vue.component(Pagination.name, Pagination);
 Vue.component(Container.name, Container);
 Vue.component(Aside.name, Aside);
 Vue.component(Main.name, Main);
+Vue.component(Popover.name, Popover);
 // element-ui文档补充，部分组件正确引入方式
 // Vue.prototype.$msgbox = MessageBox;
 // Vue.prototype.$alert = MessageBox.alert;

@@ -110,14 +110,26 @@ module.exports = class BlogService {
           }
         }
       };
-    } else if (+category) {
+    } else if (category) {
       // SELECT * FROM blogs WHERE FIND_IN_SET('1',category)
       // 0 则是全部
-      config.where = sequelize.where(
-        sequelize.fn('FIND_IN_SET', category, sequelize.col('category')),
-        '>',
-        0
-      );
+      // config.where = sequelize.where(
+      //   sequelize.fn('FIND_IN_SET', category, sequelize.col('category')),
+      //   '>',
+      //   0
+      // );
+      config.where = {
+        [Op.and]: []
+      };
+      category.split(',').map(i => {
+        config.where[Op.and].push({
+          category: sequelize.where(
+            sequelize.fn('FIND_IN_SET', i, sequelize.col('category')),
+            '>',
+            0
+          )
+        });
+      });
     }
 
     if (title) config.where = { title };

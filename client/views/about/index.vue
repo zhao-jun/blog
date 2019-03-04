@@ -22,6 +22,7 @@
 .about-container {
   position: relative;
   background-color: #fff;
+  margin-top: 30px;
   margin-bottom: 40px;
   .about-content {
     width: 1030px;

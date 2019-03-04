@@ -1,5 +1,5 @@
 <template>
-  <el-card class="search-container search-container-fixed" shadow="hover">
+  <el-card class="search-container" shadow="hover">
     <div slot="header">搜索</div>
     <div class="search">
       <i class="el-icon-search search-icon" @click="search"></i>
@@ -11,7 +11,19 @@
         @keyup.enter="search"
       />
     </div>
-    <p>微信公众号：<span class="wechat">阿夸漫谈</span></p>
+    <p>
+      微信公众号：
+      <!-- <span class="wechat" @click="chose">阿夸漫谈</span> -->
+      <el-popover
+        popper-class="qr-popper"
+        placement="bottom"
+        width="200"
+        trigger="hover"
+      >
+        <img src="../../assets/images/qrcode.jpg" class="qr-img" alt="qr" />
+        <span class="wechat" slot="reference">阿夸漫谈</span>
+      </el-popover>
+    </p>
   </el-card>
 </template>
 
@@ -34,14 +46,10 @@ export default {
   height: 140px;
   font-size: 14px;
   cursor: default;
-  &.search-container-fixed {
-    position: fixed;
-    top: 90px;
-    margin-left: 780px;
-  }
+  // 卡片头部
   .el-card__header {
     font-weight: bold;
-    padding: 8px 0;
+    padding: 10px 0;
     text-indent: 1em;
   }
   .search {
@@ -88,6 +96,13 @@ export default {
   .wechat {
     // color: rgba(245, 137, 7);
     color: #409eff;
+  }
+}
+.qr-popper {
+  padding: 0;
+  .qr-img {
+    width: 200px;
+    height: 200px;
   }
 }
 </style>

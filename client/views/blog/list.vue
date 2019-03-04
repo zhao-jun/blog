@@ -29,7 +29,10 @@
       >
       </el-pagination>
     </div>
-    <com-search />
+    <div class="blog-list-aside">
+      <com-search />
+      <com-tag :category="category" @choseCategory="choseCategory" />
+    </div>
     <com-back-top />
   </div>
 </template>
@@ -44,7 +47,7 @@ export default {
   async asyncData({ store, route }) {
     await store.dispatch('blog/category/getCategoryList');
     await store.dispatch('blog/list/getBlogList', {
-      category: route.meta.category
+      // category: route.meta.category
     });
   },
   data() {
@@ -59,6 +62,7 @@ export default {
   methods: {
     ...blogVuex.mapActions(['getBlogList']),
     ...blogVuex.mapMutations([]),
+    ...categoryVuex.mapMutations(['updateCategory']),
     detail(item) {
       this.$router.push(`${routes.blogDetail.pushPath}/${item.code}`);
     },
@@ -67,6 +71,11 @@ export default {
     },
     handleCurrentChange(value) {
       this.getBlogList({ page: value });
+    },
+    choseCategory(idArr, newCategory) {
+      this.updateCategory(newCategory);
+      // 不能传数组，category[]
+      this.getBlogList({ category: idArr.join(',') });
     }
   }
 };
@@ -75,9 +84,18 @@ export default {
 <style lang="less" scoped>
 .blog-list-container {
   padding-top: 30px;
+  // 是否悬浮控制
+  display: flex;
   .blog-list-content {
     width: 750px;
-    margin-right: 280px;
+    // margin-right: 280px;
+    margin-right: 30px;
+  }
+  // 是否悬浮控制
+  .blog-list-aside {
+    // position: fixed;
+    // top: 90px;
+    // margin-left: 780px;
   }
   .blog-header {
     display: flex;

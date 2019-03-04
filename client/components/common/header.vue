@@ -6,10 +6,10 @@
         >阿夸漫谈</router-link
       >
     </h1>
+    <!-- @select="handleSelect" -->
     <el-menu
       :default-active="activeIndex"
       mode="horizontal"
-      @select="handleSelect"
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
@@ -19,7 +19,7 @@
           >首页</router-link
         ></el-menu-item
       >
-      <el-submenu index="2" :show-timeout="0" popper-class="header-el-submenu">
+      <!-- <el-submenu index="2" :show-timeout="0" popper-class="header-el-submenu">
         <template slot="title"
           >分类</template
         >
@@ -38,7 +38,7 @@
             >其他</router-link
           ></el-menu-item
         >
-      </el-submenu>
+      </el-submenu> -->
       <!-- CSS 部分暂时隐藏，写的时候再打开 -->
       <!-- <el-menu-item :index="routes.css.path"
         ><router-link :to="routes.css.path" class="header-link"
@@ -61,10 +61,10 @@
 
 <script>
 import routes from '@/config/routes';
-import { createNamespacedHelpers } from 'vuex';
-const { mapState, mapMutations, mapActions } = createNamespacedHelpers(
-  'blog/list'
-);
+// import { createNamespacedHelpers } from 'vuex';
+// const { mapState, mapMutations, mapActions } = createNamespacedHelpers(
+//   'blog/list'
+// );
 
 export default {
   data() {
@@ -72,17 +72,17 @@ export default {
       activeIndex: this.$route.path, // TODO
       routes
     };
-  },
-  methods: {
-    ...mapActions(['getBlogList']),
-    handleSelect(key, keyPath) {
-      // 移至 beforeRouteEnter
-      // document.title = this.$route.meta.title;
-      if (this.$route.meta.category)
-        return this.getBlogList({ category: this.$route.meta.category });
-      this.getBlogList();
-    }
   }
+  // methods: {
+  //   ...mapActions(['getBlogList']),
+  //   handleSelect(key, keyPath) {
+  //     // 移至 beforeRouteEnter
+  //     // document.title = this.$route.meta.title;
+  //     if (this.$route.meta.category)
+  //       return this.getBlogList({ category: this.$route.meta.category });
+  //     this.getBlogList();
+  //   }
+  // }
 };
 </script>
 

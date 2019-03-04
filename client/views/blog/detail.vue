@@ -74,6 +74,7 @@ export default {
   .blog-detail-content {
     width: 750px;
     padding: 30px;
+    margin-top: 30px;
     box-sizing: border-box;
     background-color: #fff;
     margin-right: 280px;
