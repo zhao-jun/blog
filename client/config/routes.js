@@ -41,7 +41,13 @@ const routes = {
     name: 'css',
     meta: {
       title: 'css - 阿夸漫谈'
-    }
+    },
+    children: [
+      {
+        path: 'intro',
+        component: () => import('../components/css/intro')
+      }
+    ]
   },
   other: {
     path: '/other',

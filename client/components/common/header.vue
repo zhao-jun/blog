@@ -103,13 +103,32 @@ header {
     margin: 0;
     height: 60px;
     line-height: 60px;
-    text-indent: -100rem;
-    width: 170px;
-    background: url('../../assets/images/logo.png') no-repeat 40px center;
+    width: 150px;
+    // 图片字体为站酷高端黑，暂时不用
+    // text-indent: -100rem;
+    // background: url('../../assets/images/logo.png') no-repeat 40px center;
     background-size: 180px;
   }
   .logo-title {
     display: block;
+    color: #fff;
+    font-family: '宋体', '黑体', 'Helvetica Neue', Helvetica, STHeiTi,
+      sans-serif;
+  }
+  .logo-title:hover {
+    animation: shadow 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes shadow {
+    to {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #545c64,
+        0 0 70px #545c64, 0 0 80px #545c64, 0 0 100px #545c64, 0 0 150px #545c64;
+    }
+    from {
+      filter: brightness(110%);
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #545c64,
+        0 0 35px #545c64, 0 0 40px #545c64, 0 0 50px #545c64, 0 0 75px #545c64;
+    }
   }
   .el-menu {
     padding-right: 30px;
