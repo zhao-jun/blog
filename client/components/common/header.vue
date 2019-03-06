@@ -69,7 +69,7 @@ import routes from '@/config/routes';
 export default {
   data() {
     return {
-      activeIndex: this.$route.path, // TODO
+      activeIndex: this.$route.path.match(/\/\w*/)[0], // TODO
       routes
     };
   }

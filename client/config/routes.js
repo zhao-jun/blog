@@ -37,15 +37,22 @@ const routes = {
   },
   css: {
     path: '/css',
-    component: () => import('../views/css'),
+    component: () => import('../views/css/index'),
     name: 'css',
-    meta: {
-      title: 'css - 阿夸漫谈'
-    },
     children: [
       {
-        path: 'intro',
-        component: () => import('../components/css/intro')
+        path: '',
+        component: () => import('../components/css/intro'),
+        meta: {
+          title: 'css - 阿夸漫谈'
+        }
+      },
+      {
+        path: 'centering',
+        component: () => import('../components/css/layout/centering'),
+        meta: {
+          title: '垂直水平居中 - 阿夸漫谈'
+        }
       }
     ]
   },

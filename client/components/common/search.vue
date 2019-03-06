@@ -95,6 +95,7 @@ export default {
   }
   .wechat {
     // color: rgba(245, 137, 7);
+    cursor: pointer;
     color: #409eff;
   }
 }

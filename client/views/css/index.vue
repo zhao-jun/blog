@@ -1,33 +1,40 @@
 <template>
   <el-container class="css-container">
     <el-aside>
-      <el-menu default-active="2" class="el-menu-vertical-css">
-        <el-menu-item-group title="CSS 走廊">
-          <el-menu-item index="1">
-            <!-- <router-link exact :to="routes.css.children[0].path" class=""
-              >引言</router-link
-            > -->
+      <el-menu :default-active="getRouter(0)" class="el-menu-vertical-css">
+        <el-menu-item-group title="CSS" :index="getRouter(0)">
+          <el-menu-item :index="getRouter(0)">
+            <router-link exact :to="getRouter(0)" class="">引言</router-link>
           </el-menu-item>
         </el-menu-item-group>
         <el-menu-item-group title="布局">
-          <el-menu-item index="1"> <a href="">垂直水平居中</a> </el-menu-item>
+          <el-menu-item :index="getRouter(1)">
+            <router-link exact :to="getRouter(1)" class=""
+              >垂直水平居中</router-link
+            >
+          </el-menu-item>
         </el-menu-item-group>
       </el-menu>
     </el-aside>
-    <el-main> </el-main>
+    <el-main> <router-view></router-view> </el-main>
   </el-container>
 </template>
 
 <script>
-// import routes from '@/config/routes';
+import routes from '../../config/routes';
 
-// export default {
-//   data() {
-//     return {
-//       routes
-//     };
-//   }
-// };
+export default {
+  data() {
+    return {
+      routes
+    };
+  },
+  methods: {
+    getRouter(index) {
+      return `${routes.css.path}/${routes.css.children[index].path}`;
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>

@@ -1,3 +1,3 @@
 <template>
-  <div>引言</div>
+  <div><p>引言</p></div>
 </template>
