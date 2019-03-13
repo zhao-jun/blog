@@ -3,9 +3,10 @@ const CategoryModel = sequelize.import('../model/blog/category');
 const { categoryList } = require('../config');
 
 // 创建表
-CategoryModel.sync({ force: true, alter: true }).then(() => {
-  return CategoryModel.bulkCreate(categoryList);
-});
+// CategoryModel.sync({ force: true, alter: true }).then(() => {
+//   return CategoryModel.bulkCreate(categoryList);
+// });
+CategoryModel.sync({ force: false, alter: true });
 
 module.exports = class CategoryService {
   /**
@@ -25,7 +26,7 @@ module.exports = class CategoryService {
   static async getCategoryList() {
     return await CategoryModel.findAll({
       attributes: {
-        exclude: ['createdAt']
+        exclude: ['createdAt', 'updatedAt']
       }
     });
   }

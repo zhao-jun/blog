@@ -74,6 +74,7 @@ export default {
   .blog-detail-content {
     width: 750px;
     padding: 30px;
+    margin-top: 30px;
     box-sizing: border-box;
     background-color: #fff;
     margin-right: 280px;
@@ -91,6 +92,11 @@ export default {
     box-sizing: border-box;
     min-width: 200px;
     max-width: 750px;
+    h2,
+    h3 {
+      margin-top: -60px;
+      padding-top: 60px;
+    }
   }
   .article-header {
     width: 250px;

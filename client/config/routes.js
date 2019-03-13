@@ -35,6 +35,41 @@ const routes = {
       category: '2'
     }
   },
+  css: {
+    path: '/css',
+    component: () => import('../views/css/index'),
+    name: 'css',
+    children: [
+      {
+        path: '',
+        component: () => import('../components/css/intro'),
+        meta: {
+          title: 'css - 阿夸漫谈'
+        }
+      },
+      {
+        path: 'centering',
+        component: () => import('../components/css/layout/centering'),
+        meta: {
+          title: '垂直水平居中 - 阿夸漫谈'
+        }
+      },
+      {
+        path: 'waterfall',
+        component: () => import('../components/css/layout/waterfall'),
+        meta: {
+          title: '瀑布流布局 - 阿夸漫谈'
+        }
+      },
+      {
+        path: 'anchor',
+        component: () => import('../components/css/other/anchor'),
+        meta: {
+          title: '锚点置顶 - 阿夸漫谈'
+        }
+      }
+    ]
+  },
   other: {
     path: '/other',
     component: () => import('../views/blog/list'),

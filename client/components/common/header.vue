@@ -6,10 +6,10 @@
         >阿夸漫谈</router-link
       >
     </h1>
+    <!-- @select="handleSelect" -->
     <el-menu
       :default-active="activeIndex"
       mode="horizontal"
-      @select="handleSelect"
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b"
@@ -19,7 +19,7 @@
           >首页</router-link
         ></el-menu-item
       >
-      <el-submenu index="2" show-timeout="0" popper-class="header-el-submenu">
+      <!-- <el-submenu index="2" :show-timeout="0" popper-class="header-el-submenu">
         <template slot="title"
           >分类</template
         >
@@ -38,20 +38,11 @@
             >其他</router-link
           ></el-menu-item
         >
-      </el-submenu>
-      <!-- <el-menu-item :index="routes.fe.path"
-        ><router-link :to="routes.fe.path" class="header-link"
-          >前端</router-link
-        ></el-menu-item
-      > -->
-      <!-- <el-menu-item :index="routes.nodejs.path"
-        ><router-link :to="routes.nodejs.path" class="header-link"
-          >Node.js</router-link
-        ></el-menu-item
-      > -->
-      <!-- <el-menu-item :index="routes.other.path"
-        ><router-link :to="routes.other.path" class="header-link"
-          >其他</router-link
+      </el-submenu> -->
+      <!-- CSS 部分暂时隐藏，写的时候再打开 -->
+      <!-- <el-menu-item :index="routes.css.path"
+        ><router-link :to="routes.css.path" class="header-link"
+          >CSS</router-link
         ></el-menu-item
       > -->
       <!-- <el-menu-item :index="routes.utils.path"
@@ -70,28 +61,28 @@
 
 <script>
 import routes from '@/config/routes';
-import { createNamespacedHelpers } from 'vuex';
-const { mapState, mapMutations, mapActions } = createNamespacedHelpers(
-  'blog/list'
-);
+// import { createNamespacedHelpers } from 'vuex';
+// const { mapState, mapMutations, mapActions } = createNamespacedHelpers(
+//   'blog/list'
+// );
 
 export default {
   data() {
     return {
-      activeIndex: this.$route.path, // TODO
+      activeIndex: this.$route.path.match(/\/\w*/)[0], // TODO
       routes
     };
-  },
-  methods: {
-    ...mapActions(['getBlogList']),
-    handleSelect(key, keyPath) {
-      // 移至 beforeRouteEnter
-      // document.title = this.$route.meta.title;
-      if (this.$route.meta.category)
-        return this.getBlogList({ category: this.$route.meta.category });
-      this.getBlogList();
-    }
   }
+  // methods: {
+  //   ...mapActions(['getBlogList']),
+  //   handleSelect(key, keyPath) {
+  //     // 移至 beforeRouteEnter
+  //     // document.title = this.$route.meta.title;
+  //     if (this.$route.meta.category)
+  //       return this.getBlogList({ category: this.$route.meta.category });
+  //     this.getBlogList();
+  //   }
+  // }
 };
 </script>
 
@@ -112,13 +103,32 @@ header {
     margin: 0;
     height: 60px;
     line-height: 60px;
-    text-indent: -100rem;
-    width: 170px;
-    background: url('../../assets/images/logo.png') no-repeat 40px center;
+    width: 150px;
+    // 图片字体为站酷高端黑，暂时不用
+    // text-indent: -100rem;
+    // background: url('../../assets/images/logo.png') no-repeat 40px center;
     background-size: 180px;
   }
   .logo-title {
     display: block;
+    color: #fff;
+    font-family: '宋体', '黑体', 'Helvetica Neue', Helvetica, STHeiTi,
+      sans-serif;
+  }
+  .logo-title:hover {
+    animation: shadow 1.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes shadow {
+    to {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #545c64,
+        0 0 70px #545c64, 0 0 80px #545c64, 0 0 100px #545c64, 0 0 150px #545c64;
+    }
+    from {
+      filter: brightness(110%);
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #545c64,
+        0 0 35px #545c64, 0 0 40px #545c64, 0 0 50px #545c64, 0 0 75px #545c64;
+    }
   }
   .el-menu {
     padding-right: 30px;

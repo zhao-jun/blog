@@ -9,7 +9,7 @@ export default {
     pagination: {
       page: 1,
       rows: 10,
-      category: '',
+      category: [],
       title: '',
       keyword: ''
     }
@@ -23,12 +23,14 @@ export default {
     updatePagination(state, pagination) {
       state.pagination = pagination;
     }
-    // handleCurrentChange(state, value) {
-    //   console.log(value);
-    // }
   },
   actions: {
     async getBlogList({ commit, state }, params) {
+      // 搜索时重置页数
+      if (!params.page && !params.rows) {
+        params.page = 1;
+        // params.rows = 10;
+      }
       let pagination = Object.assign({}, state.pagination, params);
       commit('updatePagination', pagination);
       let data = await getBlogList(pagination);

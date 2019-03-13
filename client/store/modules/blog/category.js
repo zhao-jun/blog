@@ -4,10 +4,10 @@ export default {
   namespaced: true,
   state: {
     /**
-     * 目录
-     * @type {string}
+     * 标签目录
+     * @type {array}
      */
-    category: '',
+    category: [],
     /**
      * 开发环境loading
      * @type {boolean}
@@ -16,12 +16,14 @@ export default {
   },
   mutations: {
     updateCategory(state, res) {
-      state.content = res;
+      state.category = res;
       state.loading = false;
     }
   },
   actions: {
     async getCategoryList({ commit, state }) {
+      // 如果存在就不再获取 category
+      if (state.category.length) return;
       let res = await getCategoryList();
       commit('updateCategory', res);
     }
