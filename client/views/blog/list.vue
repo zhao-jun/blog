@@ -106,10 +106,10 @@ export default {
   }
   .blog-date {
     font-size: 14px;
-    color: #999;
+    color: #a1a1a1;
   }
   .blog-summary {
-    color: #999;
+    color: #6f6f6f;
     font-size: 14px;
     line-height: 2;
   }
