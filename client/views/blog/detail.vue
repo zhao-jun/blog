@@ -4,6 +4,13 @@
       <h1 class="markdown-title">{{ title }}</h1>
       <p class="markdown-date">发表于 {{ createdAt }}</p>
       <article class="markdown-body" v-html="compiledMarkdown"></article>
+      <div class="markdown-end">
+        <div class="qr-wel">
+          <p>欢迎关注</p>
+          <p>一同前行</p>
+        </div>
+        <img src="../../assets/images/qrcode.jpg" class="qr-img" alt="qr" />
+      </div>
     </div>
 
     <el-card class="article-header article-header-fixed" shadow="hover">
@@ -97,6 +104,24 @@ export default {
       margin-top: -60px;
       padding-top: 60px;
     }
+  }
+  .markdown-end {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    .qr-wel {
+      color: #999;
+    }
+    .qr-img {
+      margin-left: 20px;
+      width: 200px;
+      // transition: all 0.3s ease-in-out;
+    }
+    // .qr-img:hover {
+    //   margin-left: 40px;
+    //   width: 180px;
+    // }
   }
   .article-header {
     width: 250px;
